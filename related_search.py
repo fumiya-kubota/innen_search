@@ -1,7 +1,6 @@
 #coding: utf-8
 from flask import *
 from get_innen import build_data
-import sys
 
 app = Flask(__name__)
 
@@ -65,7 +64,3 @@ def place(place_name):
         'players': place_player
     }
     return render_template('place.html', **ctxt)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(sys.argv[1]), debug=True)

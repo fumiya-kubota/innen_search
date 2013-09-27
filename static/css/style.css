@@ -1,0 +1,14 @@
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.green {
+  color: green;
+}
+
+body {
+  width: 960px;
+  margin: 0 auto;
+}

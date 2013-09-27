@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>{{ info.cname }}</h1>
+
+<p><a href="/{{ info.birth_year }}">{{ info.birth_year }}</a>年生まれ</p>
+<p>{% if info.abstract %}{{ info.abstract }}{% endif %}</p>
+<h2>出身地</h2>
+<ul>
+{% for area in info.areas %}
+  <li><a href="/{{ area }}">{{ area }}</a></li>
+{% endfor %}
+</ul>
+
+<h2>出身高校</h2>
+<ul>
+{% for team in info.highschool %}
+  <li><a href="/{{ team }}">{{ team }}</a></li>
+{% endfor %}
+</ul>
+
+{% if info.college %}
+<h2>出身大学</h2>
+<ul>
+{% for team in info.college %}
+  <li><a href="/{{ team }}">{{ team }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if info.others %}
+<h2>社会人野球、アマチュアチームなど</h2>
+<ul>
+{% for team in info.others %}
+  <li><a href="/{{ team }}">{{ team }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if info.pro %}
+<h2>プロ所属歴のあるチーム</h2>
+<ul>
+{% for team in info.pro %}
+  <li><a href="/{{ team }}">{{ team }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

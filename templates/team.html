@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>{{ target }}に籍を置いていたことのある選手</h2>
+<div class="row">
+{% for player in players %}
+<div class="col-6 col-md-4 col-lg-2" style="height: 320px; display: none;">
+  <h3>{{ player_info[loop.index0].cname }}</h3>
+  {% set abst = player_info[loop.index0].abstract or "" %}
+  <p>{{ abst|truncate(140) }}</p>
+  <p><a href="/{{ player }}" class="btn btn-default">詳細を見る »</a></p>
+</div>
+{% endfor %}
+</div>
+<script type="text/javascript">
+  $('.row div').each(function(i) {
+    $(this).delay(i*50).fadeIn(500);
+  });
+</script>
+{% endblock %}

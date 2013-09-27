@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>生まれた年が<span id="st">{{ target }}</span>年4月〜<span id="en">{{ target|int + 1 }}</span>年3月の選手</h2>
+<input type="range" id="year_bar" max="2000" min="1900" value="{{ target }}" style="width: 100%" />
+<div class="row">
+{% for player in players %}
+<div class="col-6 col-md-4 col-lg-2" style="height: 320px; display: none;">
+  <h3>{{ player_info[loop.index0].cname }}</h3>
+  {% set abst = player_info[loop.index0].abstract or "" %}
+  <p>{{ abst|truncate(140) }}</p>
+  <p><a href="/{{ player }}" class="btn btn-default">詳細を見る »</a></p>
+</div>
+{% endfor %}
+</div>
+<script type="text/javascript">
+  $('.row div').each(function(i) {
+    $(this).delay(i*50).fadeIn(500);
+  });
+  $('#year_bar').change(function() {
+    year = Number($(this).val());
+    $('#st').text(year);
+    $('#en').text(year+1);
+  });
+  $('#year_bar').click(function() {
+    year = Number($(this).val());
+    location.href = "/" + year;
+  });
+</script>
+{% endblock %}

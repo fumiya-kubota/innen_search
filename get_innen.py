@@ -230,6 +230,8 @@ college_query = u'''
     PREFIX dbp-owl: <http://dbpedia.org/ontology/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dcterms: <http://purl.org/dc/terms/>
+    PREFIX dbpprop-ja: <http://ja.dbpedia.org/property/>
+
     select distinct ?label ?team_label
     where {
         *target_player
@@ -417,6 +419,7 @@ def get_json(query, file_name):
 def main():
     def get_query(query):
         query = query.replace('*target_player', target_player)
+        print query
         return query
 
     #get_json(get_query(highschool_query), 'highschool_team')

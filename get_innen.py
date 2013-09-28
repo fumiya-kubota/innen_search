@@ -42,6 +42,11 @@ def parse_abstract(abstract):
         date = match.group(0)
         return date[:4]
 
+def label_common(label):
+    #ラベルでも(野球)は辞書内で重複する可能性はないので取り除く
+    if label.endswith(u' (野球)'):
+        return label[:-5]
+    return label
 
 def build_data():
     #選手情報を作成する。
@@ -50,13 +55,14 @@ def build_data():
     始めにチーム情報を設定する。
     チーム情報が存在する選手はしっかりとした「野球選手」である可能性が高いためである。
     """
+
     cname = {}
     filename = os.path.join(data_dir, 'cname.json')
     with open(filename) as fp:
         cname_data = json.load(fp)
     birthdate = defaultdict(set)
     for data in cname_data:
-        label = data['label']['value']
+        label = label_common(data['label']['value'])
         cname[label] = data['cname']['value']
 
     club = {}
@@ -65,7 +71,7 @@ def build_data():
         club_data = json.load(fp)
     birthdate = defaultdict(set)
     for data in club_data:
-        label = data['label']['value']
+        label = label_common(data['label']['value'])
         club[label] = data['club_label']['value']
 
     teams = defaultdict(set)
@@ -74,13 +80,13 @@ def build_data():
         with open(filename) as fp:
             teams_data = json.load(fp)
         for data in teams_data:
-            name = data['label']['value']
+            label = label_common(data['label']['value'])
             teamname = data['team_label']['value']
-            player = players[name]
+            player = players[label]
             getattr(player, category).add(teamname)
-            teams[teamname].add(name)
-            player.cname = cname.get(name, name)
-            player.club = club.get(name)
+            teams[teamname].add(label)
+            player.cname = cname.get(label, label)
+            player.club = club.get(label)
 
     COLLEGE = {
         u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
@@ -94,14 +100,14 @@ def build_data():
     with open(filename) as fp:
         college_data = json.load(fp)
     for data in college_data:
-        name = data['label']['value']
+        label = label_common(data['label']['value'])
         teamname = data['team_label']['value']
-        player = players[name]
+        player = players[label]
         teamname = COLLEGE.get(teamname, teamname)
         if teamname.endswith(u'硬式野球部'):
             teamname = teamname[:-5]
-        player.cname = cname.get(name, name)
-        teams[teamname].add(name)
+        player.cname = cname.get(label, label)
+        teams[teamname].add(label)
         player.college.add(teamname)
 
     filename = os.path.join(data_dir, 'birthdate.json')
@@ -109,29 +115,29 @@ def build_data():
         birthdate_data = json.load(fp)
     birthdate = defaultdict(set)
     for data in birthdate_data:
-        name = data['label']['value']
-        if name not in players:
+        label = label_common(data['label']['value'])
+        if label not in players:
             continue
-        player = players[name]
+        player = players[label]
         birth = data['birthdate']['value']
         year = parse_date(birth)
         player.set_year(year)
-        birthdate[year].add(name)
+        birthdate[year].add(label)
 
     filename = os.path.join(data_dir, 'abstract.json')
     with open(filename) as fp:
         abstract_data = json.load(fp)
     for data in abstract_data:
-        name = data['label']['value']
-        if name not in players:
+        label = label_common(data['label']['value'])
+        if label not in players:
             continue
-        player = players[name]
+        player = players[label]
         abstract = data['abstract']['value']
         if not player.birth_year:
             year = parse_abstract(abstract)
             if year:
                 player.set_year(year)
-                birthdate[year].add(name)
+                birthdate[year].add(label)
         player.abstract = abstract
 
     areas = defaultdict(set)
@@ -140,19 +146,20 @@ def build_data():
         areas_data = json.load(fp)
 
     for data in areas_data:
-        name = data['label']['value']
-        if name not in players:
+        label = label_common(data['label']['value'])
+        if label not in players:
             continue
-        player = players[name]
+        player = players[label]
         pref = data['pref_label']
         if pref['type'] == 'literal':
             player.add_area(pref['value'])
-            areas[pref['value']].add(name)
+            areas[pref['value']].add(label)
 
         ht = data.get('home_town_label')
         if ht and ht['type'] == 'literal':
             player.add_area(ht['value'])
-            areas[ht['value']].add(name)
+            areas[ht['value']].add(label)
+
     return dict(players), dict(teams), dict(birthdate), dict(areas)
 
 
@@ -410,7 +417,6 @@ def get_json(query, file_name):
 def main():
     def get_query(query):
         query = query.replace('*target_player', target_player)
-        print query
         return query
 
     #get_json(get_query(highschool_query), 'highschool_team')
@@ -421,7 +427,7 @@ def main():
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')
     #get_json(get_query(cname_query), 'cname')
-    get_json(get_query(club_query), 'club')
+    #get_json(get_query(club_query), 'club')
 
 if __name__ == '__main__':
     main()

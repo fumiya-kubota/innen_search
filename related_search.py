@@ -4,7 +4,12 @@ from get_innen import build_data
 
 app = Flask(__name__)
 
-players, teams, birthdate, areas = build_data()
+players, teams, birthdate, areas, teams_list = build_data()
+
+
+@app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
+def show_teams(team_category):
+    return render_template('team_list.html', teams_list=teams_list[team_category])
 
 
 @app.route('/', methods=['GET'])

@@ -76,8 +76,10 @@ def build_data():
         if 'division' in data:
             club[label]['division'] = data['division']['value']
 
-    teams = defaultdict(set)
+    teams = {}
+    teams_list = {}
     for category in ('highschool', 'pro', 'others'):
+        category_teams = defaultdict(set)
         filename = os.path.join(data_dir, '{}_team.json'.format(category))
         with open(filename) as fp:
             teams_data = json.load(fp)
@@ -86,13 +88,15 @@ def build_data():
             teamname = data['team_label']['value']
             player = players[label]
             getattr(player, category).add(teamname)
-            teams[teamname].add(label)
+            category_teams[teamname].add(label)
             player.cname = cname.get(label, label)
             current_state = club.get(label)
             if current_state:
                 player.current_club = current_state['club']
                 if 'division' not in current_state or u'選手' in current_state['division']:
                     player.is_active = True
+        teams_list[category] = sorted(list(category_teams))
+        teams.update(category_teams)
 
     COLLEGE = {
         u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
@@ -105,6 +109,7 @@ def build_data():
     filename = os.path.join(data_dir, 'college_team.json')
     with open(filename) as fp:
         college_data = json.load(fp)
+    category_teams = defaultdict(set)
     for data in college_data:
         label = label_common(data['label']['value'])
         teamname = data['team_label']['value']
@@ -113,8 +118,12 @@ def build_data():
         if teamname.endswith(u'硬式野球部'):
             teamname = teamname[:-5]
         player.cname = cname.get(label, label)
-        teams[teamname].add(label)
+        category_teams[teamname].add(label)
         player.college.add(teamname)
+    teams_list['college'] = sorted(list(category_teams))
+    teams.update(category_teams)
+    del category_teams
+
 
     filename = os.path.join(data_dir, 'birthdate.json')
     with open(filename) as fp:
@@ -165,8 +174,10 @@ def build_data():
         if ht and ht['type'] == 'literal':
             player.add_area(ht['value'])
             areas[ht['value']].add(label)
+    players[u'小谷正勝'].is_active = False
+    players[u'青木一三'].birth_year = '1926'
 
-    return dict(players), dict(teams), dict(birthdate), dict(areas)
+    return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
 
 
 target_player = u'''

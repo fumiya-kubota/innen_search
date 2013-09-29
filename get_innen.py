@@ -65,14 +65,16 @@ def build_data():
         label = label_common(data['label']['value'])
         cname[label] = data['cname']['value']
 
-    club = {}
+    club = defaultdict(dict)
     filename = os.path.join(data_dir, 'club.json')
     with open(filename) as fp:
         club_data = json.load(fp)
     birthdate = defaultdict(set)
     for data in club_data:
         label = label_common(data['label']['value'])
-        club[label] = data['club_label']['value']
+        club[label]['club'] = data['club_label']['value']
+        if 'division' in data:
+            club[label]['division'] = data['club_label']['value']
 
     teams = defaultdict(set)
     for category in ('highschool', 'pro', 'others'):
@@ -86,7 +88,11 @@ def build_data():
             getattr(player, category).add(teamname)
             teams[teamname].add(label)
             player.cname = cname.get(label, label)
-            player.club = club.get(label)
+            current_state = club.get(label)
+            if current_state:
+                player.club = current_state['club']
+                if 'division' not in current_state or u'選手' in current_state['division']:
+                    player.is_active = True
 
     COLLEGE = {
         u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
@@ -383,13 +389,13 @@ club_query = u'''
     PREFIX dcterms: <http://purl.org/dc/terms/>
     PREFIX dbpprop-ja: <http://ja.dbpedia.org/property/>
 
-    select distinct ?label ?club_label
+    select distinct ?label ?club_label ?division
     where {
         *target_player
 
         ?person rdfs:label ?label ;
             dbp-owl:club ?club .
-
+        optional{?person dbpprop-ja:役職 ?division .}
         #県にリダイレクトページの可能性を疑う必要はあるか？
         {
             ?club dbp-owl:wikiPageRedirects ?redirects .
@@ -430,7 +436,7 @@ def main():
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')
     #get_json(get_query(cname_query), 'cname')
-    #get_json(get_query(club_query), 'club')
+    get_json(get_query(club_query), 'club')
 
 if __name__ == '__main__':
     main()

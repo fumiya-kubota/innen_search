@@ -1,3 +1,14 @@
+{% macro player_list(players) %}
+  {% for player in players %}
+<div class="col-6 col-md-4 col-lg-2" style="height: 320px; display: none;">
+  <h3>{{ player_info[loop.index0].cname }}</h3>
+  {% set abst = player_info[loop.index0].abstract or "" %}
+  <p>{{ abst|truncate(140) }}</p>
+  <p><a href="/{{ player }}" class="btn btn-default">詳細を見る »</a></p>
+</div>
+  {% endfor %}
+{% endmacro %}
+
 <!doctype html>
 <html lang="ja">
 <head>

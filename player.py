@@ -14,6 +14,7 @@ class Player(object):
         self.birth_year = None
         self.abstract = None
         self.current_club = None
+        self.is_active = False
 
     def add_team(self, t):
         self.teams.add(t)

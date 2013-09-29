@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<ul>
+{% for teamname in teams_list %}
+<li><a href="/{{ teamname }}">{{ teamname }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

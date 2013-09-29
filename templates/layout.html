@@ -1,9 +1,10 @@
 {% macro player_list(players) %}
   {% for player in players %}
 <div class="col-6 col-md-4 col-lg-2" style="height: 320px; display: none;">
-  <h3>{{ player_info[loop.index0].cname }}</h3>
+  <h3>{% if player_info[loop.index0].is_active %}<span class="red">☆</span>{% endif %}{{ player_info[loop.index0].cname }}</h3>
+  {% if player_info[loop.index0].current_club %}<h6>現所属:<strong>{{ player_info[loop.index0].current_club }}</strong></h6>{% endif %}
   {% set abst = player_info[loop.index0].abstract or "" %}
-  <p>{{ abst|truncate(140) }}</p>
+  <p>{{ abst|truncate(110) }}</p>
   <p><a href="/{{ player }}" class="btn btn-default">詳細を見る »</a></p>
 </div>
   {% endfor %}
@@ -17,6 +18,7 @@
   <title>プロ野球因縁サーチ(β){% if target %} | {{ target }}{% endif %}</title>
   <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="/static/css/style.css">
   <style type="text/css">
   body {
     overflow-y: scroll;

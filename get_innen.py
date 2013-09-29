@@ -74,7 +74,7 @@ def build_data():
         label = label_common(data['label']['value'])
         club[label]['club'] = data['club_label']['value']
         if 'division' in data:
-            club[label]['division'] = data['club_label']['value']
+            club[label]['division'] = data['division']['value']
 
     teams = defaultdict(set)
     for category in ('highschool', 'pro', 'others'):
@@ -90,7 +90,7 @@ def build_data():
             player.cname = cname.get(label, label)
             current_state = club.get(label)
             if current_state:
-                player.club = current_state['club']
+                player.current_club = current_state['club']
                 if 'division' not in current_state or u'選手' in current_state['division']:
                     player.is_active = True
 

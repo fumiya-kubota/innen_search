@@ -30,7 +30,7 @@ def top(target=''):
 
 
 def get_player_list(player_names):
-    return sorted([players[pl] for pl in player_names], key=lambda p:p.birth_date, reverse=True)
+    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date, reverse=True)
 
 
 def player(player_name):

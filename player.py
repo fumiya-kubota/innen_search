@@ -24,7 +24,7 @@ class Player(object):
         self.areas.add(a)
 
     def set_birth_date(self, date):
-        year = date.year - 1 if date.month <=3 and date.day <= 31 else date.year
+        year = date.year - 1 if date.month <= 4 and date.day <= 1 else date.year
         if self.birth_year:
             if self.birth_year != year:
                 raise

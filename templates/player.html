@@ -3,7 +3,7 @@
 {% block content %}
 <h1>{{ info.cname }}</h1>
 
-<p><a href="/{{ info.birth_year }}">{{ info.birth_year }}</a>年生まれ</p>
+<p><a href="/{{ info.birth_year }}">{{ info.birth_year }}</a>年世代</p>
 <p>{% if info.abstract %}{{ info.abstract }}{% endif %}</p>
 <h2>出身地</h2>
 <ul>
@@ -15,7 +15,38 @@
 <h2>出身高校</h2>
 <ul>
 {% for team in info.highschool %}
-  <li><a href="/{{ team }}">{{ team }}</a></li>
+  <li>
+    <a href="/{{ team }}">{{ team }}</a>
+  {% set teammate_data = get_teammate(target, team, info.birth_year, 2) %}
+  {% if teammate_data %}
+    <ul>
+    {% for year in range(info.birth_year|int - 2, info.birth_year|int + 2) %}
+      {% if teammate_data.get(year) %}
+      <li>
+        <a href="/{{ year }}">
+          {%-if year == info.birth_year-%}
+          同学年</a>
+          {%-else-%}
+          {{ year }}</a>年世代&nbsp;
+            {%-set diff = info.birth_year|int - year-%}
+          ({{ abs(diff) }}年
+            {%-if diff < 0-%}
+            後輩
+            {%-else-%}
+            先輩
+            {%-endif-%})
+          {%-endif-%}
+        <ul>
+        {% for teammate, label in teammate_data[year] %}
+          <li><a href="/{{ label }}">{{ teammate.cname }}</a></li>
+        {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </li>
 {% endfor %}
 </ul>
 
@@ -23,7 +54,38 @@
 <h2>出身大学</h2>
 <ul>
 {% for team in info.college %}
-  <li><a href="/{{ team }}">{{ team }}</a></li>
+  <li>
+    <a href="/{{ team }}">{{ team }}</a>
+  {% set teammate_data = get_teammate(target, team, info.birth_year, 3) %}
+  {% if teammate_data %}
+    <ul>
+    {% for year in range(info.birth_year|int - 3, info.birth_year|int + 3) %}
+      {% if teammate_data.get(year) %}
+      <li>
+        <a href="/{{ year }}">
+          {%-if year == info.birth_year-%}
+          同学年</a>
+          {%-else-%}
+          {{ year }}</a>年世代&nbsp;
+            {%-set diff = info.birth_year|int - year-%}
+          ({{ abs(diff) }}年
+            {%-if diff < 0-%}
+            後輩
+            {%-else-%}
+            先輩
+            {%-endif-%})
+          {%-endif-%}
+        <ul>
+        {% for teammate, label in teammate_data[year] %}
+          <li><a href="/{{ label }}">{{ teammate.cname }}</a></li>
+        {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </li>
 {% endfor %}
 </ul>
 {% endif %}
@@ -32,7 +94,39 @@
 <h2>社会人野球、アマチュアチームなど</h2>
 <ul>
 {% for team in info.others %}
-  <li><a href="/{{ team }}">{{ team }}</a></li>
+  <li>
+    <a href="/{{ team }}">{{ team }}</a>
+  {% set teammate_data = get_teammate(target, team, info.birth_year, 2) %}
+  {% if teammate_data %}
+    <ul>
+    {% for year in range(info.birth_year|int - 2, info.birth_year|int + 2) %}
+      {% if teammate_data.get(year) %}
+      <li>
+        <a href="/{{ year }}">
+          {%-if year == info.birth_year-%}
+          同学年</a>
+          {%-else-%}
+          {{ year }}</a>年世代&nbsp;
+            {%-set diff = info.birth_year|int - year-%}
+          ({{ abs(diff) }}年
+            {%-if diff < 0-%}
+            後輩
+            {%-else-%}
+            先輩
+            {%-endif-%})
+          {%-endif-%}
+        <ul>
+        {% for teammate, label in teammate_data[year] %}
+          <li><a href="/{{ label }}">{{ teammate.cname }}</a></li>
+        {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+  </li>
 {% endfor %}
 </ul>
 {% endif %}

@@ -2,7 +2,7 @@
 from flask import *
 from get_innen import build_data
 from datetime import datetime
-
+from collections import defaultdict
 app = Flask(__name__)
 
 players, teams, birthdate, areas, teams_list = build_data()
@@ -34,11 +34,18 @@ def get_player_list(player_names):
     return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1900, 1, 1), reverse=True)
 
 
+def get_teammate(target, teamname, birth_year, diff):
+    teammate_data = defaultdict(list)
+    [teammate_data[int(players[pl].birth_year)].append((players[pl], pl)) for pl in teams[teamname] if pl != target and players[pl].birth_year and abs(int(players[pl].birth_year) - int(birth_year)) <= diff]
+    return teammate_data
+
 def player(player_name):
     target = players[player_name]
     ctxt = {
         'target': player_name,
-        'info': target
+        'info': target,
+        'get_teammate': get_teammate,
+        'abs': abs
     }
     return render_template('player.html', **ctxt)
 

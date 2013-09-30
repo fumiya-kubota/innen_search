@@ -18,29 +18,31 @@ data_dir = 'data'
 
 
 def parse_date(birthdate):
-    date = datetime.strptime(birthdate, '%Y-%m-%d')
-    return str(date.year - 1) if 1 <= date.month <= 3 else str(date.year)
+    return datetime.strptime(birthdate, '%Y-%m-%d')
 
 
 #例1清水 宏員（しみず ひろかず、1933年4月14日 - ）は、日本のプロ野球選手（投手）。
 #例2新庄 剛志（しんじょう つよし、1972年（昭和47年）1月28日 - ）
 def parse_abstract(abstract):
     #例2のような年号を取り除く
+    candidate = []
     n = NENGO_REGX.search(abstract)
     if n:
         b = n.start(), n.end()
         abstract = abstract.replace(abstract[b[0]:b[1]], '')
+
     match = DATE_REGX.search(abstract)
     if match:
         date = match.group(0)
         date = ''.join([d if d in nums else '-' for d in date[:-1]])
-        date = datetime.strptime(date, '%Y-%m-%d')
-        return str(date.year - 1) if 1 <= date.month <= 3 else str(date.year)
+        candidate.append(datetime.strptime(date, '%Y-%m-%d'))
 
     match = YEAR_REGX.search(abstract)
     if match:
         date = match.group(0)
-        return date[:4]
+        candidate.append(datetime(int(date[:4]), 4, 1))
+    if candidate:
+        return min(candidate)
 
 def label_common(label):
     #ラベルでも(野球)は辞書内で重複する可能性はないので取り除く
@@ -135,9 +137,10 @@ def build_data():
             continue
         player = players[label]
         birth = data['birthdate']['value']
-        year = parse_date(birth)
-        player.set_year(year)
-        birthdate[year].add(label)
+        date = parse_date(birth)
+        year = player.set_birth_date(date)
+        if year:
+            birthdate[year].add(label)
 
     filename = os.path.join(data_dir, 'abstract.json')
     with open(filename) as fp:
@@ -149,9 +152,9 @@ def build_data():
         player = players[label]
         abstract = data['abstract']['value']
         if not player.birth_year:
-            year = parse_abstract(abstract)
-            if year:
-                player.set_year(year)
+            date = parse_abstract(abstract)
+            if date:
+                year = player.set_birth_date(date)
                 birthdate[year].add(label)
         player.abstract = abstract
 
@@ -175,7 +178,6 @@ def build_data():
             player.add_area(ht['value'])
             areas[ht['value']].add(label)
     players[u'小谷正勝'].is_active = False
-    players[u'青木一三'].birth_year = '1926'
 
     return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
 

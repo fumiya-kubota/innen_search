@@ -29,6 +29,10 @@ def top(target=''):
         return render_template('not_found.html', target=target)
 
 
+def get_player_list(player_names):
+    return sorted([players[pl] for pl in player_names], key=lambda p:p.birth_date, reverse=True)
+
+
 def player(player_name):
     target = players[player_name]
     ctxt = {
@@ -40,32 +44,29 @@ def player(player_name):
 
 def birthyear(year):
     year_players = birthdate[year]
-    player_info = [players[pl] for pl in year_players]
+    player_info = get_player_list(year_players)
     ctxt = {
         'target': year,
-        'player_info': player_info,
-        'players': year_players
+        'players': player_info
     }
     return render_template('year.html', **ctxt)
 
 
 def team(team_name):
     team_players = teams[team_name]
-    player_info = [players[pl] for pl in team_players]
+    player_info = get_player_list(team_players)
     ctxt = {
         'target': team_name,
-        'player_info': player_info,
-        'players': team_players
+        'players': player_info
     }
     return render_template('team.html', **ctxt)
 
 
 def place(place_name):
     place_player = areas[place_name]
-    player_info = [players[pl] for pl in place_player]
+    player_info = get_player_list(place_player)
     ctxt = {
         'target': place_name,
-        'player_info': player_info,
-        'players': place_player
+        'players': player_info
     }
     return render_template('place.html', **ctxt)

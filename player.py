@@ -31,3 +31,4 @@ class Player(object):
         else:
             self.birth_year = year
             self.birth_date = date
+            return str(year)

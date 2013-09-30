@@ -1,6 +1,7 @@
 #coding: utf-8
 from flask import *
 from get_innen import build_data
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -30,7 +31,7 @@ def top(target=''):
 
 
 def get_player_list(player_names):
-    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date, reverse=True)
+    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1900, 1, 1), reverse=True)
 
 
 def player(player_name):

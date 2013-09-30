@@ -1,4 +1,5 @@
 #coding: utf-8
+from datetime import datetime
 
 class Player(object):
     def __init__(self):
@@ -24,7 +25,7 @@ class Player(object):
         self.areas.add(a)
 
     def set_birth_date(self, date):
-        year = date.year - 1 if date.month <= 4 and date.day <= 1 else date.year
+        year = date.year - 1 if date < datetime(date.year, 4, 2) else date.year
         if self.birth_year:
             if self.birth_year != year:
                 raise

@@ -178,6 +178,7 @@ def build_data():
             player.add_area(ht['value'])
             areas[ht['value']].add(label)
     players[u'小谷正勝'].is_active = False
+    players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
 
     return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
 

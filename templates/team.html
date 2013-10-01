@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>{{ target }}に籍を置いていたことのある選手</h2>
-<a target="_blank" href="http://ja.wikipedia.org/wiki/{{ target }}">http://ja.wikipedia.org/wiki/{{ target }}</a>
+<a target="_blank" href="http://ja.wikipedia.org/wiki/{{ target.replace(' ', '_') }}">http://ja.wikipedia.org/wiki/{{ target }}</a>
 
 <div class="row">
   {{ player_list(players) }}

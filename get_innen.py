@@ -338,32 +338,36 @@ others_query = u'''
         ?person rdfs:label ?label ;
             dbp-owl:team ?team .
 
-        ?team rdfs:label ?team_label .
-        FILTER NOT EXISTS {
+        {
             ?team dbp-owl:wikiPageRedirects ?redirects .
-            ?redirects dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .
-        }
-        FILTER NOT EXISTS {
-            ?team dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .
-        }
-        FILTER NOT EXISTS {
-            ?team dbp-owl:wikiPageRedirects ?redirects__ .
-            <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects__ .
-        }
-        FILTER NOT EXISTS {
-            <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
-        }
-
-        FILTER NOT EXISTS {
-            ?team dbp-owl:wikiPageRedirects ?redirects_ .
-            ?redirects_ dcterms:subject ?category_ .
-            ?category_ rdfs:label ?category_label_ .
-            FILTER regex(?category_label_, "大学")
-        }
-        FILTER NOT EXISTS {
-            ?team dcterms:subject ?category .
-            ?category rdfs:label ?category_label .
-            FILTER regex(?category_label, "大学")
+            FILTER NOT EXISTS {
+                ?redirects dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .
+            }
+            FILTER NOT EXISTS {
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects .
+            }
+            FILTER NOT EXISTS {
+                ?redirects dcterms:subject ?category .
+                ?category rdfs:label ?category_label .
+                FILTER regex(?category_label, "大学")
+            }
+            ?redirects rdfs:label ?team_label .
+        } union {
+            FILTER NOT EXISTS {
+                ?team dbp-owl:wikiPageRedirects ?redirects .
+            }
+            FILTER NOT EXISTS {
+                ?team dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .
+            }
+            FILTER NOT EXISTS {
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
+            }
+            FILTER NOT EXISTS {
+                ?team dcterms:subject ?category .
+                ?category rdfs:label ?category_label .
+                FILTER regex(?category_label, "大学")
+            }
+            ?team rdfs:label ?team_label .
         }
     }
 '''
@@ -464,12 +468,12 @@ def main():
     #get_json(get_query(highschool_query), 'highschool_team')
     #get_json(get_query(college_query), 'college_team')
     #get_json(get_query(pro_query), 'pro_team')
-    #get_json(get_query(others_query), 'others_team')
+    get_json(get_query(others_query), 'others_team')
     #get_json(get_query(abstract_query), 'abstract')
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')
     #get_json(get_query(cname_query), 'cname')
-    get_json(get_query(club_query), 'club')
+    #get_json(get_query(club_query), 'club')
 
 if __name__ == '__main__':
     main()

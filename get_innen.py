@@ -86,8 +86,45 @@ def build_data():
         if 'division' in data:
             club[label]['division'] = data['division']['value']
 
+
     teams = {}
     teams_list = {}
+
+    COLLEGE_NAMES = set()
+    COLLEGE_NAME_FIX = {
+        u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
+        u'慶應義塾体育会野球部': u'慶應義塾大学',
+        u'早稲田大学野球部': u'早稲田大学',
+        u'同志社大学体育会硬式野球部': u'同志社大学',
+        u'法政大学野球部': u'法政大学',
+        u'近畿大学体育会硬式野球部': u'近畿大学'
+    }
+    def college_tean_name(teamname):
+        teamname = COLLEGE_NAME_FIX.get(teamname, teamname)
+        if teamname.endswith(u'硬式野球部'):
+            return teamname[:-5]
+        return teamname
+
+    filename = os.path.join(data_dir, 'college_team.json')
+    with open(filename) as fp:
+        college_data = json.load(fp)
+    category_teams = defaultdict(set)
+    for data in college_data:
+        label, label_end = label_common_first(data['label']['value'])
+        teamname = data['team_label']['value']
+        player = players[label]
+        if label_end:
+            player.label_end = label_end
+        COLLEGE_NAMES.add(teamname)
+        teamname = college_tean_name(teamname)
+        COLLEGE_NAMES.add(teamname)
+        player.cname = cname.get(label, label)
+        category_teams[teamname].add(label)
+        player.college.add(teamname)
+    teams_list['college'] = sorted(list(category_teams))
+    teams.update(category_teams)
+
+
     for category in ('highschool', 'pro', 'others'):
         category_teams = defaultdict(set)
         filename = os.path.join(data_dir, '{}_team.json'.format(category))
@@ -96,6 +133,8 @@ def build_data():
         for data in teams_data:
             label, label_end = label_common_first(data['label']['value'])
             teamname = data['team_label']['value']
+            if teamname in COLLEGE_NAMES:
+                continue
             player = players[label]
             if label_end:
                 player.label_end = label_end
@@ -110,34 +149,6 @@ def build_data():
                     player.is_active = True
         teams_list[category] = category_teams
         teams.update(category_teams)
-
-    COLLEGE = {
-        u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
-        u'慶應義塾体育会野球部': u'慶應義塾大学',
-        u'早稲田大学野球部': u'早稲田大学',
-        u'同志社大学体育会硬式野球部': u'同志社大学',
-        u'法政大学野球部': u'法政大学',
-        u'近畿大学体育会硬式野球部': u'近畿大学'
-    }
-    filename = os.path.join(data_dir, 'college_team.json')
-    with open(filename) as fp:
-        college_data = json.load(fp)
-    category_teams = defaultdict(set)
-    for data in college_data:
-        label, label_end = label_common_first(data['label']['value'])
-        teamname = data['team_label']['value']
-        player = players[label]
-        if label_end:
-            player.label_end = label_end
-
-        teamname = COLLEGE.get(teamname, teamname)
-        if teamname.endswith(u'硬式野球部'):
-            teamname = teamname[:-5]
-        player.cname = cname.get(label, label)
-        category_teams[teamname].add(label)
-        player.college.add(teamname)
-    teams_list['college'] = sorted(list(category_teams))
-    teams.update(category_teams)
 
     for k in teams_list:
         member_num = [(team, len(teams[team])) for team in teams_list[k]]
@@ -346,11 +357,7 @@ others_query = u'''
             FILTER NOT EXISTS {
                 <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects .
             }
-            FILTER NOT EXISTS {
-                ?redirects dcterms:subject ?category .
-                ?category rdfs:label ?category_label .
-                FILTER regex(?category_label, "大学")
-            }
+
             ?redirects rdfs:label ?team_label .
         } union {
             FILTER NOT EXISTS {
@@ -361,11 +368,6 @@ others_query = u'''
             }
             FILTER NOT EXISTS {
                 <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
-            }
-            FILTER NOT EXISTS {
-                ?team dcterms:subject ?category .
-                ?category rdfs:label ?category_label .
-                FILTER regex(?category_label, "大学")
             }
             ?team rdfs:label ?team_label .
         }
@@ -468,7 +470,7 @@ def main():
     #get_json(get_query(highschool_query), 'highschool_team')
     #get_json(get_query(college_query), 'college_team')
     #get_json(get_query(pro_query), 'pro_team')
-    #get_json(get_query(others_query), 'others_team')
+    get_json(get_query(others_query), 'others_team')
     #get_json(get_query(abstract_query), 'abstract')
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')

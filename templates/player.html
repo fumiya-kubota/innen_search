@@ -3,6 +3,8 @@
 {% block content %}
 <h1>{{ info.cname }}</h1>
 
+<a target="_blank" href="http://ja.wikipedia.org/wiki/{{ target }}{{ info.label_end }}">http://ja.wikipedia.org/wiki/{{ target }}{{ info.label_end }}</a>
+<br><br>
 <p><a href="/{{ info.birth_year }}">{{ info.birth_year }}</a>年世代</p>
 <p>{% if info.abstract %}{{ info.abstract }}{% endif %}</p>
 <h2>出身地</h2>

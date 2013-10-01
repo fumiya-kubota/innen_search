@@ -50,6 +50,14 @@ def label_common(label):
         return label[:-5]
     return label
 
+
+def label_common_first(label):
+    #ラベルでも(野球)は辞書内で重複する可能性はないので取り除く
+    if label.endswith(u' (野球)'):
+        return label[:-5], '_' + label[-4:]
+    return label, None
+
+
 def build_data():
     #選手情報を作成する。
     players = defaultdict(Player)
@@ -86,9 +94,12 @@ def build_data():
         with open(filename) as fp:
             teams_data = json.load(fp)
         for data in teams_data:
-            label = label_common(data['label']['value'])
+            label, label_end = label_common_first(data['label']['value'])
             teamname = data['team_label']['value']
             player = players[label]
+            if label_end:
+                player.label_end = label_end
+
             getattr(player, category).add(teamname)
             category_teams[teamname].add(label)
             player.cname = cname.get(label, label)
@@ -113,9 +124,12 @@ def build_data():
         college_data = json.load(fp)
     category_teams = defaultdict(set)
     for data in college_data:
-        label = label_common(data['label']['value'])
+        label, label_end = label_common_first(data['label']['value'])
         teamname = data['team_label']['value']
         player = players[label]
+        if label_end:
+            player.label_end = label_end
+
         teamname = COLLEGE.get(teamname, teamname)
         if teamname.endswith(u'硬式野球部'):
             teamname = teamname[:-5]

@@ -50,9 +50,7 @@
   (function($) {
     $("#search").on('click', function(){
       var name = $("#target").val();
-      if(name) {
-        window.open('/' + name, '_self');
-      }
+      window.open('/' + name, '_self');
     });
     $("body").keypress( function( event ) {
       if( event.which === 13 ){

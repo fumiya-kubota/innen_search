@@ -108,7 +108,7 @@ def build_data():
                 player.current_club = current_state['club']
                 if 'division' not in current_state or u'選手' in current_state['division']:
                     player.is_active = True
-        teams_list[category] = sorted(list(category_teams))
+        teams_list[category] = category_teams
         teams.update(category_teams)
 
     COLLEGE = {
@@ -138,6 +138,11 @@ def build_data():
         player.college.add(teamname)
     teams_list['college'] = sorted(list(category_teams))
     teams.update(category_teams)
+
+    for k in teams_list:
+        member_num = [(team, len(teams[team])) for team in teams_list[k]]
+        teams_list[k] = sorted(member_num, key=lambda x:x[1], reverse=True)
+
     del category_teams
 
 

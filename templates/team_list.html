@@ -2,9 +2,8 @@
 
 {% block content %}
 <ul>
-{% for teamname in teams_list %}
-<li><a href="/{{ teamname }}">{{ teamname }}</a></li>
+{% for teamname, num in teams_list %}
+<li><a href="/{{ teamname }}">{{ teamname }}({{ num }})</a></li>
 {% endfor %}
 </ul>
-
 {% endblock %}

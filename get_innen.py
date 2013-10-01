@@ -40,7 +40,7 @@ def parse_abstract(abstract):
     match = YEAR_REGX.search(abstract)
     if match:
         date = match.group(0)
-        candidate.append(datetime(int(date[:4]), 4, 1))
+        candidate.append(datetime(int(date[:4]), 4, 2))
     if candidate:
         return min(candidate)
 

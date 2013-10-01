@@ -7,3 +7,11 @@
 .green {
   color: green;
 }
+
+.text-muted a {
+  color: #999;
+}
+.text-muted a:hover {
+  text-decoration: none;
+}
+

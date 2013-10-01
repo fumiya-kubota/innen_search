@@ -468,7 +468,7 @@ def main():
     #get_json(get_query(highschool_query), 'highschool_team')
     #get_json(get_query(college_query), 'college_team')
     #get_json(get_query(pro_query), 'pro_team')
-    get_json(get_query(others_query), 'others_team')
+    #get_json(get_query(others_query), 'others_team')
     #get_json(get_query(abstract_query), 'abstract')
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')

@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 app = Flask(__name__)
 
-players, teams, birthdate, areas, teams_list = data_build()
+players, teams, birthdate, areas, teams_list, h_alias = data_build()
 
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
@@ -16,6 +16,7 @@ def show_teams(team_category):
 @app.route('/', methods=['GET'])
 @app.route('/<target>', methods=['GET'])
 def top(target=''):
+    target = h_alias.get(target, target)
     if not target:
         return render_template('top.html')
     elif target in players:

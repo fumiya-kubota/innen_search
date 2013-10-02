@@ -292,6 +292,26 @@ club_query = u'''
     }
 '''
 
+highschool_alias_query = u'''
+    PREFIX dbp-owl: <http://dbpedia.org/ontology/>
+    PREFIX dbpprop-ja: <http://ja.dbpedia.org/property/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    select distinct ?team_label ?r_label
+    where {
+        {
+            ?team dbp-owl:wikiPageRedirects ?redirects .
+            ?redirects dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> ;
+                rdfs:label ?team_label .
+        } union {
+            ?team dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> ;
+                rdfs:label ?team_label .
+            FILTER NOT EXISTS{?team dbp-owl:wikiPageRedirects ?redirects .}
+        }
+        ?r dbp-owl:wikiPageRedirects ?team ;
+            rdfs:label ?r_label .
+    }
+'''
 
 def get_json(query, file_name):
     sparql = SPARQLWrapper("http://ja.dbpedia.org/sparql")
@@ -468,7 +488,19 @@ def make_data():
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
     dump_file.close()
 
-    #return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
+    dump_file = open('dump/highschool_alias.json', 'w')
+    dump_file = codecs.lookup('utf-8')[-1](dump_file)
+    alias = {}
+    for row in json.load(open('data/highschool_alias.json')):
+        label = row['team_label']['value']
+        if label not in teams:
+            continue
+        alias[row['r_label']['value']] = label
+
+    json.dump(
+        alias, dump_file,
+        ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
+    dump_file.close()
 
 
 def data_build():
@@ -504,7 +536,9 @@ def data_build():
         birth_year[v.birth_year].append(k)
     for k in teams_list:
         teams_list[k] = sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True)
-    return players, dict(teams), dict(birth_year), dict(areas), teams_list
+
+    h_alias = json.load(open('dump/highschool_alias.json'))
+    return players, dict(teams), dict(birth_year), dict(areas), teams_list, h_alias
 
 
 def main():
@@ -522,6 +556,7 @@ def main():
     #get_json(get_query(pref_query), 'area')
     #get_json(get_query(cname_query), 'cname')
     #get_json(get_query(club_query), 'club')
+    #get_json(highschool_alias_query, 'highschool_alias')
     make_data()
 
 if __name__ == '__main__':

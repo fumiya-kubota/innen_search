@@ -6,7 +6,7 @@ from collections import defaultdict
 import json
 import codecs
 import os
-from player import Player
+from player import Player, player_from_dict
 
 DATE_REGX = re.compile(ur'\d{4}年\d{1,2}月\d{1,2}日')
 NENGO_REGX = re.compile(ur'[（\(]..\d{1,2}年[）\)]')
@@ -56,161 +56,6 @@ def label_common_first(label):
     if label.endswith(u' (野球)'):
         return label[:-5], '_' + label[-4:]
     return label, None
-
-
-def build_data():
-    #選手情報を作成する。
-    players = defaultdict(Player)
-    """
-    始めにチーム情報を設定する。
-    チーム情報が存在する選手はしっかりとした「野球選手」である可能性が高いためである。
-    """
-
-    cname = {}
-    filename = os.path.join(data_dir, 'cname.json')
-    with open(filename) as fp:
-        cname_data = json.load(fp)
-    birthdate = defaultdict(set)
-    for data in cname_data:
-        label = label_common(data['label']['value'])
-        cname[label] = data['cname']['value']
-
-    club = defaultdict(dict)
-    filename = os.path.join(data_dir, 'club.json')
-    with open(filename) as fp:
-        club_data = json.load(fp)
-    birthdate = defaultdict(set)
-    for data in club_data:
-        label = label_common(data['label']['value'])
-        club[label]['club'] = data['club_label']['value']
-        if 'division' in data:
-            club[label]['division'] = data['division']['value']
-
-
-    teams = {}
-    teams_list = {}
-
-    COLLEGE_NAMES = set()
-    COLLEGE_NAME_FIX = {
-        u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
-        u'慶應義塾体育会野球部': u'慶應義塾大学',
-        u'早稲田大学野球部': u'早稲田大学',
-        u'同志社大学体育会硬式野球部': u'同志社大学',
-        u'法政大学野球部': u'法政大学',
-        u'近畿大学体育会硬式野球部': u'近畿大学'
-    }
-    def college_tean_name(teamname):
-        teamname = COLLEGE_NAME_FIX.get(teamname, teamname)
-        if teamname.endswith(u'硬式野球部'):
-            return teamname[:-5]
-        return teamname
-
-    filename = os.path.join(data_dir, 'college_team.json')
-    with open(filename) as fp:
-        college_data = json.load(fp)
-    category_teams = defaultdict(set)
-    for data in college_data:
-        label, label_end = label_common_first(data['label']['value'])
-        teamname = data['team_label']['value']
-        player = players[label]
-        if label_end:
-            player.label_end = label_end
-        COLLEGE_NAMES.add(teamname)
-        teamname = college_tean_name(teamname)
-        COLLEGE_NAMES.add(teamname)
-        player.cname = cname.get(label, label)
-        category_teams[teamname].add(label)
-        player.college.add(teamname)
-    teams_list['college'] = sorted(list(category_teams))
-    teams.update(category_teams)
-
-
-    for category in ('highschool', 'pro', 'others'):
-        category_teams = defaultdict(set)
-        filename = os.path.join(data_dir, '{}_team.json'.format(category))
-        with open(filename) as fp:
-            teams_data = json.load(fp)
-        for data in teams_data:
-            label, label_end = label_common_first(data['label']['value'])
-            teamname = data['team_label']['value']
-            if teamname in COLLEGE_NAMES:
-                continue
-            player = players[label]
-            if label_end:
-                player.label_end = label_end
-
-            getattr(player, category).add(teamname)
-            category_teams[teamname].add(label)
-            player.cname = cname.get(label, label)
-            current_state = club.get(label)
-            if current_state:
-                player.current_club = current_state['club']
-                if 'division' not in current_state or u'選手' in current_state['division']:
-                    player.is_active = True
-        teams_list[category] = category_teams
-        teams.update(category_teams)
-
-    for k in teams_list:
-        member_num = [(team, len(teams[team])) for team in teams_list[k]]
-        teams_list[k] = sorted(member_num, key=lambda x:x[1], reverse=True)
-
-    del category_teams
-
-
-    filename = os.path.join(data_dir, 'birthdate.json')
-    with open(filename) as fp:
-        birthdate_data = json.load(fp)
-    birthdate = defaultdict(set)
-    for data in birthdate_data:
-        label = label_common(data['label']['value'])
-        if label not in players:
-            continue
-        player = players[label]
-        birth = data['birthdate']['value']
-        date = parse_date(birth)
-        year = player.set_birth_date(date)
-        if year:
-            birthdate[year].add(label)
-
-    filename = os.path.join(data_dir, 'abstract.json')
-    with open(filename) as fp:
-        abstract_data = json.load(fp)
-    for data in abstract_data:
-        label = label_common(data['label']['value'])
-        if label not in players:
-            continue
-        player = players[label]
-        abstract = data['abstract']['value']
-        if not player.birth_year:
-            date = parse_abstract(abstract)
-            if date:
-                year = player.set_birth_date(date)
-                birthdate[year].add(label)
-        player.abstract = abstract
-
-    areas = defaultdict(set)
-    filename = os.path.join(data_dir, 'area.json')
-    with open(filename) as fp:
-        areas_data = json.load(fp)
-
-    for data in areas_data:
-        label = label_common(data['label']['value'])
-        if label not in players:
-            continue
-        player = players[label]
-        pref = data['pref_label']
-        if pref['type'] == 'literal':
-            player.add_area(pref['value'])
-            areas[pref['value']].add(label)
-
-        ht = data.get('home_town_label')
-        if ht and ht['type'] == 'literal':
-            player.add_area(ht['value'])
-            areas[ht['value']].add(label)
-    players[u'小谷正勝'].is_active = False
-    players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
-
-    return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
 
 
 target_player = u'''
@@ -461,6 +306,207 @@ def get_json(query, file_name):
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
 
 
+def make_data():
+    #選手情報を作成する。
+    players = defaultdict(Player)
+    """
+    始めにチーム情報を設定する。
+    チーム情報が存在する選手はしっかりとした「野球選手」である可能性が高いためである。
+    """
+
+    cname = {}
+    filename = os.path.join(data_dir, 'cname.json')
+    with open(filename) as fp:
+        cname_data = json.load(fp)
+    birthdate = defaultdict(set)
+    for data in cname_data:
+        label = label_common(data['label']['value'])
+        cname[label] = data['cname']['value']
+
+    club = defaultdict(dict)
+    filename = os.path.join(data_dir, 'club.json')
+    with open(filename) as fp:
+        club_data = json.load(fp)
+    birthdate = defaultdict(set)
+    for data in club_data:
+        label = label_common(data['label']['value'])
+        club[label]['club'] = data['club_label']['value']
+        if 'division' in data:
+            club[label]['division'] = data['division']['value']
+
+
+    teams = {}
+    teams_list = {}
+
+    COLLEGE_NAMES = set()
+    COLLEGE_NAME_FIX = {
+        u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
+        u'慶應義塾体育会野球部': u'慶應義塾大学',
+        u'早稲田大学野球部': u'早稲田大学',
+        u'同志社大学体育会硬式野球部': u'同志社大学',
+        u'法政大学野球部': u'法政大学',
+        u'近畿大学体育会硬式野球部': u'近畿大学'
+    }
+    def college_tean_name(teamname):
+        teamname = COLLEGE_NAME_FIX.get(teamname, teamname)
+        if teamname.endswith(u'硬式野球部'):
+            return teamname[:-5]
+        return teamname
+
+    filename = os.path.join(data_dir, 'college_team.json')
+    with open(filename) as fp:
+        college_data = json.load(fp)
+    category_teams = defaultdict(set)
+    for data in college_data:
+        label, label_end = label_common_first(data['label']['value'])
+        teamname = data['team_label']['value']
+        player = players[label]
+        if label_end:
+            player.label_end = label_end
+        COLLEGE_NAMES.add(teamname)
+        teamname = college_tean_name(teamname)
+        COLLEGE_NAMES.add(teamname)
+        player.cname = cname.get(label, label)
+        category_teams[teamname].add(label)
+        player.college.add(teamname)
+    teams_list['college'] = sorted(list(category_teams))
+    teams.update(category_teams)
+
+
+    for category in ('highschool', 'pro', 'others'):
+        category_teams = defaultdict(set)
+        filename = os.path.join(data_dir, '{}_team.json'.format(category))
+        with open(filename) as fp:
+            teams_data = json.load(fp)
+        for data in teams_data:
+            label, label_end = label_common_first(data['label']['value'])
+            teamname = data['team_label']['value']
+            if teamname in COLLEGE_NAMES:
+                continue
+            player = players[label]
+            if label_end:
+                player.label_end = label_end
+
+            getattr(player, category).add(teamname)
+            category_teams[teamname].add(label)
+            player.cname = cname.get(label, label)
+            current_state = club.get(label)
+            if current_state:
+                player.current_club = current_state['club']
+                if 'division' not in current_state or u'選手' in current_state['division']:
+                    player.is_active = True
+        teams_list[category] = category_teams
+        teams.update(category_teams)
+
+    for k in teams_list:
+        member_num = [(team, len(teams[team])) for team in teams_list[k]]
+        teams_list[k] = sorted(member_num, key=lambda x:x[1], reverse=True)
+
+    del category_teams
+
+
+    filename = os.path.join(data_dir, 'birthdate.json')
+    with open(filename) as fp:
+        birthdate_data = json.load(fp)
+    birthdate = defaultdict(set)
+    for data in birthdate_data:
+        label = label_common(data['label']['value'])
+        if label not in players:
+            continue
+        player = players[label]
+        birth = data['birthdate']['value']
+        date = parse_date(birth)
+        year = player.set_birth_date(date)
+        if year:
+            birthdate[year].add(label)
+
+    filename = os.path.join(data_dir, 'abstract.json')
+    with open(filename) as fp:
+        abstract_data = json.load(fp)
+    for data in abstract_data:
+        label = label_common(data['label']['value'])
+        if label not in players:
+            continue
+        player = players[label]
+        abstract = data['abstract']['value']
+        if not player.birth_year:
+            date = parse_abstract(abstract)
+            if date:
+                year = player.set_birth_date(date)
+                birthdate[year].add(label)
+        player.abstract = abstract
+
+    areas = defaultdict(set)
+    filename = os.path.join(data_dir, 'area.json')
+    with open(filename) as fp:
+        areas_data = json.load(fp)
+
+    for data in areas_data:
+        label = label_common(data['label']['value'])
+        if label not in players:
+            continue
+        player = players[label]
+        pref = data['pref_label']
+        if pref['type'] == 'literal':
+            player.add_area(pref['value'])
+            areas[pref['value']].add(label)
+
+        ht = data.get('home_town_label')
+        if ht and ht['type'] == 'literal':
+            player.add_area(ht['value'])
+            areas[ht['value']].add(label)
+
+    players[u'小谷正勝'].is_active = False
+    players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
+
+    dump_file = open('dump/dump.json', 'w')
+    dump_file = codecs.lookup('utf-8')[-1](dump_file)
+
+    dump_data = [pl.dump(k) for k, pl in players.iteritems()]
+    json.dump(
+        dump_data, dump_file,
+        ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
+    dump_file.close()
+
+    #return dict(players), dict(teams), dict(birthdate), dict(areas), teams_list
+
+
+def data_build():
+    players = {}
+    teams = defaultdict(list)
+    areas = defaultdict(list)
+    birth_year = defaultdict(list)
+    teams_list = {
+        'highschool': defaultdict(int),
+        'college': defaultdict(int),
+        'pro': defaultdict(int),
+        'others': defaultdict(int),
+    }
+    with open('dump/dump.json') as fp:
+        data = json.load(fp)
+        for row in data:
+            players[row['label']] = player_from_dict(row)
+    for k, v in players.iteritems():
+        for h in v.highschool:
+            teams[h].append(k)
+            teams_list['highschool'][h] += 1
+        for c in v.college:
+            teams[c].append(k)
+            teams_list['college'][c] += 1
+        for p in v.pro:
+            teams[p].append(k)
+            teams_list['pro'][p] += 1
+        for o in v.others:
+            teams[o].append(k)
+            teams_list['others'][o] += 1
+        for a in v.areas:
+            areas[a].append(k)
+        birth_year[v.birth_year].append(k)
+    for k in teams_list:
+        teams_list[k] = sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True)
+    return players, dict(teams), dict(birth_year), dict(areas), teams_list
+
+
 def main():
     def get_query(query):
         query = query.replace('*target_player', target_player)
@@ -470,12 +516,13 @@ def main():
     #get_json(get_query(highschool_query), 'highschool_team')
     #get_json(get_query(college_query), 'college_team')
     #get_json(get_query(pro_query), 'pro_team')
-    get_json(get_query(others_query), 'others_team')
+    #get_json(get_query(others_query), 'others_team')
     #get_json(get_query(abstract_query), 'abstract')
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')
     #get_json(get_query(cname_query), 'cname')
     #get_json(get_query(club_query), 'club')
+    make_data()
 
 if __name__ == '__main__':
     main()

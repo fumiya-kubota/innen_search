@@ -1,11 +1,11 @@
 #coding: utf-8
 from flask import *
-from get_innen import build_data
+from get_innen import data_build
 from datetime import datetime
 from collections import defaultdict
 app = Flask(__name__)
 
-players, teams, birthdate, areas, teams_list = build_data()
+players, teams, birthdate, areas, teams_list = data_build()
 
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])

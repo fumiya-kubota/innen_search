@@ -371,6 +371,8 @@ def make_data():
         teamname = COLLEGE_NAME_FIX.get(teamname, teamname)
         if teamname.endswith(u'硬式野球部'):
             return teamname[:-5]
+        elif teamname.endswith(u'野球部'):
+            return teamname[:-3]
         return teamname
 
     filename = os.path.join(data_dir, 'college_team.json')
@@ -403,6 +405,10 @@ def make_data():
             teamname = data['team_label']['value']
             if teamname in COLLEGE_NAMES:
                 continue
+            if teamname.endswith(u'硬式野球部'):
+                teamname = teamname[:-5]
+            elif teamname.endswith(u'野球部'):
+                teamname = teamname[:-3]
             player = players[label]
             if label_end:
                 player.label_end = label_end

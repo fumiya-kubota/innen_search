@@ -59,7 +59,7 @@ def prefix_search(target):
     if idx:
         up = down = True
         search = 1
-        players = []
+        players = [SORTED_PLAYERS_LIST[idx]]
         while up or down:
             if up:
                 name = SORTED_PLAYERS_LIST[idx - search]

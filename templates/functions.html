@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% macro dummy_search(word) %}
+  <input class="dummy-textbox" type="text" value="{{ word }}" readonly="readonly">
+  <input type="submit" value="検索" onClick="window.open('/{{ word }}')">
+  <br>
+{% endmacro %}
+
+{% block content %}
+<h1>出来ること</h1>
+<div class="function">
+  <h3>選手名検索</h3>
+  <p>
+    選手名を入力すると個人のページに飛びます。<br>
+    過去のチームの所属歴や、時を同じくして所属していた可能性が高い選手などを調べることが出来ます。
+  </p>
+  <p>
+    {{ dummy_search('イチロー') }}
+    {{ dummy_search('長嶋茂雄') }}
+    {{ dummy_search('古田敦也') }}
+  </p>
+  <p>
+    選手名の一部を入力することで前方一致での検索も出来ます。<br>
+    該当する選手を一覧で表示します。
+  </p>
+  <p>
+    {{ dummy_search('藤井') }}
+    {{ dummy_search('前田') }}
+  </p>
+</div>
+
+<div class="function">
+  <h3>チーム名検索</h3>
+  <p>
+    チーム名を入力するとそのチームに所属歴がある選手を一覧で表示します。
+  </p>
+  <p>
+    {{ dummy_search('愛知工業大学附属中学校・名電高等学校') }}
+    {{ dummy_search('横浜中学校・高等学校') }}
+    {{ dummy_search('法政大学') }}
+    {{ dummy_search('東芝') }}
+  </p>
+  <p>
+    高校に関しては一部略称などでも検索が出来ます。
+  </p>
+  <p>
+    {{ dummy_search('愛工大名電') }}
+    {{ dummy_search('横浜高校') }}
+    {{ dummy_search('中京大中京') }}
+    {{ dummy_search('Y校') }}
+  </p>
+</div>
+
+<div class="function">
+  <h3>世代検索</h3>
+  <p>
+    年を西暦で入力するとその世代の選手を一覧で表示します。<br>
+    誕生日がその年の4月2日から翌4月1日までの選手を世代の選手として扱います。
+  </p>
+  <p>
+    {{ dummy_search('1980') }}
+    {{ dummy_search('1988') }}
+  </p>
+</div>
+
+<div class="function">
+  <h3>出身地検索</h3>
+  <p>
+    地名を入力すると出身地に持つ選手を一覧で表示します。<br>
+  </p>
+  <p>
+    {{ dummy_search('鳥取県') }}
+    {{ dummy_search('長崎県佐世保市') }}
+  </p>
+</div>
+{% endblock %}

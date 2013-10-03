@@ -5,9 +5,10 @@
 
 {% macro show_teammate(target, team, birth_year, diff) %}
   {% set teammate_data = get_teammate(target, team, birth_year, diff) %}
+  {% set diff = diff + 1 %}
   {% if teammate_data %}
     <ul>
-    {% for year in range(birth_year|int - 2, birth_year|int + 2) %}
+    {% for year in range(birth_year|int - diff, birth_year|int + diff) %}
       {% if teammate_data.get(year) %}
       <li>
         <a href="/{{ year }}">

@@ -14,6 +14,11 @@ def function():
     return ''
 
 
+@app.route('/<any(tutorial, functions):tutorial>', methods=['GET'])
+def functions(tutorial):
+    return render_template('functions.html', target=tutorial)
+
+
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
     return render_template('team_list.html', teams_list=teams_list[team_category])

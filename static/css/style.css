@@ -15,3 +15,16 @@
   text-decoration: none;
 }
 
+.dummy-textbox {
+  width: 270px;
+}
+.container {
+  padding-bottom: 100px;
+}
+
+.footer {
+  height: 100px;
+  line-height: 100px;
+  background-color: #eee;
+  text-align: center;
+}

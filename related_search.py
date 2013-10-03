@@ -85,7 +85,7 @@ def prefix_search(target):
 
 
 def get_player_list(player_names):
-    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1900, 1, 1), reverse=True)
+    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
 
 
 def get_teammate(target, teamname, birth_year, diff):

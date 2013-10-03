@@ -16,7 +16,6 @@ nums = frozenset(map(str, xrange(10)))
 
 data_dir = 'data'
 
-
 def parse_date(birthdate):
     return datetime.strptime(birthdate, '%Y-%m-%d')
 
@@ -502,10 +501,19 @@ def make_data():
         if label not in teams:
             continue
         alias[row['r_label']['value']] = label
-
     json.dump(
         alias, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
+    dump_file.close()
+
+
+    dump_file = open('dump/sorted_players_list.json', 'w')
+    dump_file = codecs.lookup('utf-8')[-1](dump_file)
+    alias = {}
+    players_list = sorted([label for label in players])
+    json.dump(
+        players_list, dump_file,
+        ensure_ascii=False, encoding='utf-8', indent=2)
     dump_file.close()
 
 
@@ -544,7 +552,8 @@ def data_build():
         teams_list[k] = sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True)
 
     h_alias = json.load(open('dump/highschool_alias.json'))
-    return players, dict(teams), dict(birth_year), dict(areas), teams_list, h_alias
+    sorted_players = tuple(json.load(open('dump/sorted_players_list.json')))
+    return players, dict(teams), dict(birth_year), dict(areas), teams_list, h_alias, sorted_players
 
 
 def main():

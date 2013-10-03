@@ -5,7 +5,13 @@ from datetime import datetime
 from collections import defaultdict
 app = Flask(__name__)
 
-players, teams, birthdate, areas, teams_list, h_alias = data_build()
+players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = data_build()
+PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
+
+
+@app.route('/favicon.ico', methods=['GET'])
+def function():
+    return ''
 
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
@@ -16,17 +22,64 @@ def show_teams(team_category):
 @app.route('/', methods=['GET'])
 @app.route('/<target>', methods=['GET'])
 def top(target=''):
-    target = h_alias.get(target, target)
     if not target:
         return render_template('top.html')
     elif target in players:
         return player(target)
-    elif target in teams:
+    elif target in teams or target in h_alias:
+        target = h_alias.get(target, target)
         return team(target)
     elif target in birthdate:
         return birthyear(target)
     elif target in areas:
         return place(target)
+    else:
+        return prefix_search(target)
+    return render_template('not_found.html', target=target)
+
+
+def binary_search(word):
+    s = PLAYERS_LENGTH
+    lo = 0
+    while lo < s:
+        mid = (lo + s) / 2
+        name = SORTED_PLAYERS_LIST[mid]
+        if name.startswith(word):
+            return mid
+        else:
+            if name < word:
+                lo = mid + 1
+            else:
+                s = mid
+    return None
+
+
+def prefix_search(target):
+    idx = binary_search(target)
+    if idx:
+        up = down = True
+        search = 1
+        players = []
+        while up or down:
+            if up:
+                name = SORTED_PLAYERS_LIST[idx - search]
+                if name.startswith(target):
+                    players.append(name)
+                else:
+                    up = False
+            if down:
+                name = SORTED_PLAYERS_LIST[idx + search]
+                if name.startswith(target):
+                    players.append(name)
+                else:
+                    down = False
+            search += 1
+        player_info = get_player_list(players)
+        ctxt = {
+            'target': target,
+            'players': player_info
+        }
+        return render_template('prefix_search.html', **ctxt)
     else:
         return render_template('not_found.html', target=target)
 
@@ -79,3 +132,6 @@ def place(place_name):
         'players': player_info
     }
     return render_template('place.html', **ctxt)
+
+if __name__ == '__main__':
+    app.run(debug=True)

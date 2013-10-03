@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>前方一致：{{ target }}</h2>
+<div class="row">
+  {{ player_list(players) }}
+</div>
+<script type="text/javascript">
+  $('.row div').each(function(i) {
+    $(this).delay(i*50).fadeIn(500);
+  });
+</script>
+{% endblock %}

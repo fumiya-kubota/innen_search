@@ -547,7 +547,7 @@ def data_build():
             teams_list['others'][o] += 1
         for a in v.areas:
             areas[a].append(k)
-        birth_year[v.birth_year].append(k)
+        birth_year[str(v.birth_year)].append(k)
     for k in teams_list:
         teams_list[k] = sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True)
 

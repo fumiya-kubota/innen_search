@@ -10,8 +10,8 @@ PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
 @app.route('/favicon.ico', methods=['GET'])
-def function():
-    return ''
+def favicon():
+    abort(404)
 
 
 @app.route('/<any(tutorial, functions):tutorial>', methods=['GET'])

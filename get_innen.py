@@ -313,7 +313,7 @@ highschool_alias_query = u'''
 '''
 
 def get_json(query, file_name):
-    sparql = SPARQLWrapper("http://ja.dbpedia.org/sparql")
+    sparql = SPARQLWrapper('http://ja.dbpedia.org/sparql')
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
@@ -321,7 +321,7 @@ def get_json(query, file_name):
     outfile = open('data/{}.json'.format(file_name), 'w')
     outfile = codecs.lookup('utf-8')[-1](outfile)
     json.dump(
-        results["results"]["bindings"], outfile,
+        results['results']['bindings'], outfile,
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
 
 
@@ -481,8 +481,9 @@ def make_data():
             player.add_area(ht['value'])
             areas[ht['value']].add(label)
 
-    players[u'小谷正勝'].is_active = False
-    players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
+
+
+    my_fix(players)
 
     dump_file = open('dump/dump.json', 'w')
     dump_file = codecs.lookup('utf-8')[-1](dump_file)
@@ -515,6 +516,49 @@ def make_data():
         players_list, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2)
     dump_file.close()
+
+def my_fix(players):
+    players[u'小谷正勝'].is_active = False
+    players[u'門倉健'].is_active = False
+    players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
+    players[u'元木大介'] = player_from_dict({
+        'abstract': u'元木 大介（もとき だいすけ、1971年12月30日 - ）は、大阪府豊中市出身の元プロ野球選手（内野手、外野手）。',
+        'areas': [
+            u'大阪府',
+            u'大阪府豊中市'
+        ],
+        'birth_date': '1971-12-30',
+        'cname': u'元木 大介',
+        'college': [],
+        'current_club': None,
+        'highschool': [
+            u'上宮中学校・高等学校'
+        ],
+        'is_active': False,
+        'others': [],
+        'pro': [
+            u'読売ジャイアンツ',
+        ]
+    })
+    players[u'板東英二'] = player_from_dict({
+        'abstract': u'板東 英二（ばんどう えいじ、1940年4月5日 - ）は、日本の元プロ野球選手・野球解説者・タレント・司会者・俳優。愛称は板ちゃん（ばんちゃん）。「坂東英二」は誤記。',
+        'areas': [
+            u'徳島県',
+            u'徳島県板野郡板東町（のちの鳴門市）'
+        ],
+        'birth_date': '1940-4-5',
+        'cname': u'坂東 英二',
+        'college': [],
+        'current_club': None,
+        'highschool': [
+            u'徳島県立徳島商業高等学校'
+        ],
+        'is_active': False,
+        'others': [],
+        'pro': [
+            u'中日ドラゴンズ',
+        ]
+    })
 
 
 def data_build():

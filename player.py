@@ -56,7 +56,6 @@ class Player(object):
 def player_from_dict(data):
     pl = Player()
     pl.cname = data.get('cname')
-    pl.label = data.get('label')
     pl.highschool = data.get('highschool')
     pl.college = data.get('college')
     pl.pro = data.get('pro')

@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 
 {% macro dummy_search(word) %}
-  <input class="dummy-textbox" type="text" value="{{ word }}" readonly="readonly">
-  <input type="submit" value="検索" onClick="window.open('/{{ word }}')">
-  <br>
+  <div class="form-group">
+  <input class="dummy-textbox form-control" type="text" value="{{ word }}" readonly="readonly">
+  <input type="submit" value="検索" class="btn btn-default" onClick="window.open('/{{ word }}')">
+  </div>
 {% endmacro %}
 
 {% block content %}

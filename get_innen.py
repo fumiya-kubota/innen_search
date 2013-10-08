@@ -593,7 +593,7 @@ def data_build():
             areas[a].append(k)
         birth_year[str(v.birth_year)].append(k)
     for k in teams_list:
-        teams_list[k] = sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True)
+        teams_list[k] = tuple(sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True))
 
     h_alias = json.load(open('dump/highschool_alias.json'))
     sorted_players = tuple(json.load(open('dump/sorted_players_list.json')))

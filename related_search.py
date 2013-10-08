@@ -9,19 +9,6 @@ players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = dat
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
-redirect_urls = {
-    'http://innen-search.heroku.com': 'http://innen-search.com',
-    'http://innen-search.herokuapp.com': 'http://innen-search.com',
-    'http://www.innen-search.com': 'http://innen-search.com',
-}
-
-def redirect_url():
-    return redirect(redirect_urls[request.url], 301)
-
-for url in redirect_urls:
-    app.add_url_rule(url, url, redirect_url)
-
-
 @app.route('/favicon.ico', methods=['GET'])
 def favicon():
     abort(404)

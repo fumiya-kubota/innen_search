@@ -11,11 +11,8 @@ PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 @app.before_request
 def before_request():
-    print session
-    # the variable current_url does not exist
-    # but i want something that works like it
-    #if (not 'logged_in' in session) and (current_url != '/login'):
-    #    return redirect(url_for('login'))
+    if not request.base_url[:7 + 12].startswith('.com'):
+        return redirect('http://innen-search.com')
 
 
 @app.route('/favicon.ico', methods=['GET'])

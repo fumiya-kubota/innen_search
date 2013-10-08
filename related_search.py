@@ -9,12 +9,6 @@ players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = dat
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
-@app.before_request
-def before_request():
-    if not request.base_url[:7 + 12].startswith('.com'):
-        return redirect('http://innen-search.com')
-
-
 @app.route('/favicon.ico', methods=['GET'])
 def favicon():
     abort(404)

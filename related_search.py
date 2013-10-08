@@ -9,6 +9,15 @@ players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = dat
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
+@app.before_request
+def before_request():
+    print session
+    # the variable current_url does not exist
+    # but i want something that works like it
+    #if (not 'logged_in' in session) and (current_url != '/login'):
+    #    return redirect(url_for('login'))
+
+
 @app.route('/favicon.ico', methods=['GET'])
 def favicon():
     abort(404)

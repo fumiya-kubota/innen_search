@@ -7,6 +7,19 @@ app = Flask(__name__)
 
 players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
+REDIRECT_URL = frozenset([
+    'www.innen-search.com',
+    'innen-search.herokuapp.com',
+    'innen-search.heroku.com',
+])
+URL = u'http://innen-search.com{}'
+
+
+@app.before_request
+def br():
+    print request.host in REDIRECT_URL
+    if request.host in REDIRECT_URL:
+        return redirect(URL.format(request.path) , 301)
 
 
 @app.route('/favicon.ico', methods=['GET'])

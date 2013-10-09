@@ -17,7 +17,6 @@ URL = u'http://innen-search.com{}'
 
 @app.before_request
 def br():
-    print request.host in REDIRECT_URL
     if request.host in REDIRECT_URL:
         return redirect(URL.format(request.path) , 301)
 

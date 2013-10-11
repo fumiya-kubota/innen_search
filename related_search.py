@@ -26,9 +26,9 @@ def favicon():
     abort(404)
 
 
-@app.route('/<any(tutorial, functions):tutorial>', methods=['GET'])
-def functions(tutorial):
-    return render_template('functions.html', target=tutorial)
+@app.route(u'/使い方', methods=['GET'])
+def functions():
+    return render_template('functions.html', target=u'使い方')
 
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])

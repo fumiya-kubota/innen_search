@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% if kind == 1 %}
+  {% set kind = '所属歴' %}
+{% elif kind == 2 %}
+  {% set kind = '世代' %}
+{% elif kind == 3 %}
+  {% set kind = '出身地' %}
+{% elif kind == 4 %}
+  {% set kind = '前方一致' %}
+{% endif %}
+
+{% block content %}
+<h2>{{ kind }}：{{ target }}</h2>
+<div class="row">
+  {{ player_list(players) }}
+</div>
+<script type="text/javascript">
+  $('.row div').each(function(i) {
+    $(this).delay(i*50).fadeIn(500);
+  });
+</script>
+{% endblock %}

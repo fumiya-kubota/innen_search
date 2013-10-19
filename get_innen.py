@@ -6,9 +6,9 @@ from player import Player, player_from_dict
 
 def data_build():
     players = {}
-    teams = defaultdict(list)
-    areas = defaultdict(list)
-    birth_year = defaultdict(list)
+    teams = defaultdict(set)
+    areas = defaultdict(set)
+    birth_year = defaultdict(set)
     teams_list = {
         'highschool': defaultdict(int),
         'college': defaultdict(int),
@@ -21,20 +21,20 @@ def data_build():
             players[row['label']] = player_from_dict(row)
     for k, v in players.iteritems():
         for h in v.highschool:
-            teams[h].append(k)
+            teams[h].add(k)
             teams_list['highschool'][h] += 1
         for c in v.college:
-            teams[c].append(k)
+            teams[c].add(k)
             teams_list['college'][c] += 1
         for p in v.pro:
-            teams[p].append(k)
+            teams[p].add(k)
             teams_list['pro'][p] += 1
         for o in v.others:
-            teams[o].append(k)
+            teams[o].add(k)
             teams_list['others'][o] += 1
         for a in v.areas:
-            areas[a].append(k)
-        birth_year[str(v.birth_year)].append(k)
+            areas[a].add(k)
+        birth_year[str(v.birth_year)].add(k)
     for k in teams_list:
         teams_list[k] = tuple(sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True))
 

@@ -11,9 +11,11 @@
 {% endif %}
 
 {% block content %}
-<h2>{{ kind_name }}：{{ target }}</h2>
+<h2>{{ kind_name }}：<span id="st">{{ target }}</span></h2>
 {% if kind == 1 %}
   <p><a href="http://ja.wikipedia.org/wiki/{{ target }}">http://ja.wikipedia/wiki/{{ target }}</a></p>
+{% elif kind == 2 %}
+  <input type="range" id="year_bar" max="2000" min="1900" value="{{ target }}" style="width: 100%" />
 {% endif %}
 <div class="row">
   {{ player_list(players) }}
@@ -22,5 +24,15 @@
   $('.row div').each(function(i) {
     $(this).delay(i*50).fadeIn(500);
   });
+{% if kind == 2 %}
+  $('#year_bar').change(function() {
+    year = Number($(this).val());
+    $('#st').text(year);
+  });
+  $('#year_bar').click(function() {
+    year = Number($(this).val());
+    location.href = "/" + year;
+  });
+{% endif %}
 </script>
 {% endblock %}

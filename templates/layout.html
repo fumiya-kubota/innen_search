@@ -1,7 +1,12 @@
 {% macro player_list(players) %}
   {% for player, label in players %}
-<div class="col-6 col-md-4 col-lg-2" style="height: 320px; display: none;">
-  <h3>{% if player.is_active %}<span class="red">☆</span>{% endif %}{{ player.cname }}</h3>
+    {% if player.is_active %}
+<div class="col-6 col-md-4 col-lg-2 active" name="{{ loop.index }}" style="height: 320px; display: none;">
+  <h3><span class="red">☆</span>{{ player.cname }}</h3>
+    {% else %}
+<div class="col-6 col-md-4 col-lg-2" name="{{ loop.index }}" style="height: 320px; display: none;">
+  <h3>{{ player.cname }}</h3>
+    {% endif %}
   {% if player.current_club %}<h6>現:<strong>{{ player.current_club }}</strong></h6>{% endif %}
   {% set abst = player.abstract or "" %}
   <p>{{ abst|truncate(110) }}</p>

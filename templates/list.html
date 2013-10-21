@@ -17,13 +17,22 @@
 {% elif kind == 2 %}
   <input type="range" id="year_bar" max="2000" min="1900" value="{{ target }}" style="width: 100%" />
 {% endif %}
+<label for="active-filter"><input type="checkbox" id="active-filter">現役選手で絞り込み</label>
 <div class="row">
   {{ player_list(players) }}
 </div>
 <script type="text/javascript">
-  $('.row div').each(function(i) {
-    $(this).delay(i*50).fadeIn(500);
+  $('.row div').fadeIn(500);
+
+  $("#active-filter").change(function(){
+    $('.row div').hide();
+    if($(this).prop('checked')) {
+      $('.row div.active').fadeIn(500);
+    }else {
+      $('.row div').fadeIn(500);
+    }
   });
+
 {% if kind == 2 %}
   $('#year_bar').change(function() {
     year = Number($(this).val());

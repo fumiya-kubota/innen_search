@@ -115,7 +115,9 @@ def prefix_search(target):
         return players
 
 
-def get_player_list(player_names):
+def get_player_list(player_names, name=False):
+    if name:
+        return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].cname if p[0].cname else p[1])
     return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
 
 
@@ -131,7 +133,7 @@ def player_list(target, kind):
         players = KIND2STORE[kind][target]
 
     if players:
-        players = get_player_list(players)
+        players = get_player_list(players, kind==DATA_KIND_GENERATION)
         return render_template('list.html', target=target, players=players, kind=kind)
     return render_template('not_found.html', target=target)
 

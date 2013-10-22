@@ -29,3 +29,34 @@
   background-color: #eee;
   text-align: center;
 }
+
+.open {
+  cursor: pointer;
+}
+
+.teams-list > li {
+  margin-bottom: 5px;
+}
+
+.hover-popup {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.hover-popup:hover .popup {
+  display: block; /*ブロック要素で表示*/
+}
+
+.popup {
+  z-index: 100;
+  position: absolute;
+  top:17px;
+  left:180px;
+  display: none;
+  padding: 5px;
+  width: 300px;
+  color: black;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px black solid;
+}

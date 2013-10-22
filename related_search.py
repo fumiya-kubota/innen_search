@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 app = Flask(__name__)
 
-players, teams, birthdate, areas, teams_list, h_alias, SORTED_PLAYERS_LIST = data_build()
+players, teams, birthdate, areas, teams_list, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
@@ -35,7 +35,7 @@ def functions():
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
-    return render_template('team_list.html', teams_list=teams_list[team_category])
+    return render_template('team_list.html', teams_list=teams_list[team_category], alias=ALIAS_REVERSE)
 
 
 DATA_KIND_PLAYER = 0
@@ -55,7 +55,7 @@ KIND2STORE = {
 def top(target=''):
     if not target:
         return render_template('top.html')
-    target = h_alias.get(target, target)
+    target = ALIAS.get(target, target)
 
     kind = get_data_kind(target)
     if kind == DATA_KIND_PLAYER:
@@ -66,7 +66,7 @@ def top(target=''):
 def get_data_kind(target):
     if target in players:
         return DATA_KIND_PLAYER
-    elif target in teams or target in h_alias:
+    elif target in teams:
         return DATA_KIND_TEAM
     elif target in birthdate:
         return DATA_KIND_GENERATION

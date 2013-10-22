@@ -1,9 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<ul>
+<ul class="teams-list">
 {% for teamname, num in teams_list %}
-<li><a href="/{{ teamname }}">{{ teamname }}({{ num }})</a></li>
+<li>
+  {% set is_alias = teamname in alias %}
+  <a href="/{{ teamname }}" {% if is_alias %}class="hover-popup"{% endif %}>{{ teamname }}({{ num }})
+  {% if is_alias %}
+  <p class="popup">
+    {% for a in alias[teamname] %}
+    {{ a }}<br>
+    {% endfor %}
+  </p>
+  {% endif %}</a>
+</li>
 {% endfor %}
 </ul>
 {% endblock %}

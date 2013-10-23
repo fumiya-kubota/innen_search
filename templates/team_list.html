@@ -3,17 +3,20 @@
 {% block content %}
 <ul class="teams-list">
 {% for teamname, num in teams_list %}
+  {% if teamname in alias %}
 <li>
-  {% set is_alias = teamname in alias %}
-  <a href="/{{ teamname }}" {% if is_alias %}class="hover-popup"{% endif %}>{{ teamname }}({{ num }})
-  {% if is_alias %}
+  <a href="/{{ teamname }}" class="hover-popup">{{ teamname }}({{ num }})
   <p class="popup">
     {% for a in alias[teamname] %}
     {{ a }}<br>
     {% endfor %}
-  </p>
-  {% endif %}</a>
+  </p></a>
 </li>
+  {% else %}
+<li style="list-style-type:circle;">
+  <a href="/{{ teamname }}" class="hover-popup">{{ teamname }}({{ num }})</a>
+</li>
+  {% endif %}
 {% endfor %}
 </ul>
 {% endblock %}

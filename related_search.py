@@ -80,7 +80,7 @@ def binary_search(word):
     lo = 0
     while lo < s:
         mid = (lo + s) / 2
-        name = SORTED_PLAYERS_LIST[mid]
+        name = SORTED_PLAYERS_LIST[mid][0]
         if name.startswith(word):
             return mid
         else:
@@ -96,18 +96,16 @@ def prefix_search(target):
     if idx:
         up = down = True
         search = 1
-        players = {SORTED_PLAYERS_LIST[idx]}
+        players = {SORTED_PLAYERS_LIST[idx][1]}
         while up or down:
             if up:
-                name = SORTED_PLAYERS_LIST[idx - search]
-                if name.startswith(target):
-                    players.add(name)
+                if SORTED_PLAYERS_LIST[idx - search][0].startswith(target):
+                    players.add(SORTED_PLAYERS_LIST[idx - search][1])
                 else:
                     up = False
             if down:
-                name = SORTED_PLAYERS_LIST[idx + search]
-                if name.startswith(target):
-                    players.add(name)
+                if SORTED_PLAYERS_LIST[idx + search][0].startswith(target):
+                    players.add(SORTED_PLAYERS_LIST[idx + search][1])
                 else:
                     down = False
             search += 1

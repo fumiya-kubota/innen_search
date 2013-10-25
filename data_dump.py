@@ -58,14 +58,13 @@ def label_common_first(label):
 
 
 target_player = u'''
-        #対象は日本人の野球選手
+        #対象は日本人でプレーした事のある野球選手
         {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
+            ?p dcterms:subject <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
         } union {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:MLBの日本人選手> .
-        } union {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:在日外国人の野球選手> .
-        }'''
+            <http://ja.dbpedia.org/resource/日本のプロ野球選手一覧> dbp-owl:wikiPageWikiLink ?p .
+        }
+'''
 
 birth_query = u'''
     PREFIX dbp-owl: <http://dbpedia.org/ontology/>
@@ -159,13 +158,14 @@ college_query = u'''
     }
 '''
 
-pro_query = u'''
+#プロ野球の所属歴は分けないと10000件超えてしまう。。。
+pro1_query = u'''
     PREFIX dbp-owl: <http://dbpedia.org/ontology/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dcterms: <http://purl.org/dc/terms/>
     select distinct ?label ?team_label
     where {
-        *target_player
+        ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
 
         ?person dbp-owl:team ?team ;
             rdfs:label ?label .
@@ -176,6 +176,44 @@ pro_query = u'''
         } union {
             <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
             ?team rdfs:label ?team_label .
+        }
+    }
+'''
+
+pro2_query = u'''
+    PREFIX dbp-owl: <http://dbpedia.org/ontology/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX dcterms: <http://purl.org/dc/terms/>
+    select distinct ?label ?team_label
+    where {
+        <http://ja.dbpedia.org/resource/日本のプロ野球選手一覧> dbp-owl:wikiPageWikiLink ?person .
+
+        FILTER NOT EXISTS {
+            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
+        }
+        {
+            ?person dbp-owl:wikiPageRedirects ?redirects_person .
+            ?redirects_person dbp-owl:team ?team ;
+                rdfs:label ?label .
+            {
+                ?team dbp-owl:wikiPageRedirects ?redirects .
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects .
+                ?redirects rdfs:label ?team_label .
+            } union {
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
+                ?team rdfs:label ?team_label .
+            }
+        } union {
+            ?person dbp-owl:team ?team ;
+                rdfs:label ?label .
+            {
+                ?team dbp-owl:wikiPageRedirects ?redirects .
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects .
+                ?redirects rdfs:label ?team_label .
+            } union {
+                <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
+                ?team rdfs:label ?team_label .
+            }
         }
     }
 '''
@@ -394,9 +432,11 @@ def make_data():
     teams.update(category_teams)
 
 
-    for category in ('highschool', 'pro', 'others'):
+    for category in ('highschool', 'pro1' ,'pro2' , 'others'):
         category_teams = defaultdict(set)
         filename = os.path.join(data_dir, '{}_team.json'.format(category))
+        if category in ('pro1', 'pro2'):
+            category = 'pro'
         with open(filename) as fp:
             teams_data = json.load(fp)
         for data in teams_data:
@@ -511,7 +551,12 @@ def make_data():
     dump_file = open('dump/sorted_players_list.json', 'w')
     dump_file = codecs.lookup('utf-8')[-1](dump_file)
     alias = {}
-    players_list = sorted([label for label in players])
+    players_list = []
+    for label in players:
+        for spl in label.split(u'・'):
+            players_list.append((spl, label))
+
+    players_list = sorted(players_list)
     json.dump(
         players_list, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2)
@@ -521,6 +566,10 @@ def my_fix(players):
     players[u'小谷正勝'].is_active = False
     players[u'門倉健'].is_active = False
     players[u'鶴岡賢二郎'].cname = u'靍岡 賢二郎'
+    players[u'田畑一也'].is_active = False;
+    players[u'内藤尚行'].is_active = False;
+    players[u'桑田真澄'].college = set()
+
     players[u'元木大介'] = player_from_dict({
         'abstract': u'元木 大介（もとき だいすけ、1971年12月30日 - ）は、大阪府豊中市出身の元プロ野球選手（内野手、外野手）。',
         'areas': [
@@ -559,6 +608,30 @@ def my_fix(players):
             u'中日ドラゴンズ',
         ]
     })
+    players[u'ランディ・バース'] = player_from_dict({
+        'abstract': u'ランディ・バース（Randy William Bass, 1954年3月13日 - ）は、アメリカ合衆国オクラホマ州ロートン生まれの元プロ野球選手（内野手）、政治家。2004年からオクラホマ州議会の上院議員（民主党）。',
+        'areas': [
+            u'オクラホマ州',
+            u'オクラホマ州ロートン'
+        ],
+        'cname': u'ランディ・バース',
+        'birth_date': '1954-3-13',
+        'college': [
+            u'オクラホマ大学'
+        ],
+        'highschool': [
+            u'ロートン高等学校'
+        ],
+        'pro': [
+            u'ミネソタ・ツインズ',
+            u'カンザスシティ・ロイヤルズ',
+            u'モントリオール・エクスポズ',
+            u'サンディエゴ・パドレス',
+            u'テキサス・レンジャーズ',
+            u'阪神タイガース',
+        ],
+        'others': []
+    })
 
 
 def main():
@@ -570,7 +643,10 @@ def main():
     #get_json(get_query(highschool_query), 'highschool_team')
     #get_json(get_query(college_query), 'college_team')
     #get_json(get_query(pro_query), 'pro_team')
+    #get_json(pro1_query, 'pro1_team')
+    #get_json(pro2_query, 'pro2_team')
     #get_json(get_query(others_query), 'others_team')
+
     #get_json(get_query(abstract_query), 'abstract')
     #get_json(get_query(birth_query), 'birthdate')
     #get_json(get_query(pref_query), 'area')

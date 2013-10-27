@@ -65,7 +65,10 @@ target_player = u'''
             ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:MLBの日本人選手> .
         } union {
             ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:在日外国人の野球選手> .
-        }'''
+        } union {
+            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日系人の野球選手> .
+        }
+'''
 
 birth_query = u'''
     PREFIX dbp-owl: <http://dbpedia.org/ontology/>

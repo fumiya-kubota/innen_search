@@ -1,3 +1,4 @@
+
 #coding: utf-8
 from SPARQLWrapper import SPARQLWrapper, JSON
 import re
@@ -315,6 +316,28 @@ highschool_alias_query = u'''
     }
 '''
 
+proteam_alias_query = u'''
+    PREFIX dbp-owl: <http://dbpedia.org/ontology/>
+    PREFIX dbpprop-ja: <http://ja.dbpedia.org/property/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    select distinct ?team_label ?r_label
+    where {
+        {
+            ?team dbp-owl:wikiPageRedirects ?redirects .
+            <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?redirects .
+            ?redirects rdfs:label ?team_label .
+        } union {
+            <http://ja.dbpedia.org/resource/プロ野球チーム一覧> dbp-owl:wikiPageWikiLink ?team .
+            ?team rdfs:label ?team_label .
+            FILTER NOT EXISTS{?team dbp-owl:wikiPageRedirects ?redirects .}
+        }
+        ?r dbp-owl:wikiPageRedirects ?team ;
+            rdfs:label ?r_label .
+    }
+'''
+
+
 def get_json(query, file_name):
     sparql = SPARQLWrapper('http://ja.dbpedia.org/sparql')
     sparql.setQuery(query)
@@ -497,14 +520,15 @@ def make_data():
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
     dump_file.close()
 
-    dump_file = open('dump/highschool_alias.json', 'w')
+    dump_file = open('dump/team_alias.json', 'w')
     dump_file = codecs.lookup('utf-8')[-1](dump_file)
     alias = {}
-    for row in json.load(open('data/highschool_alias.json')):
-        label = row['team_label']['value']
-        if label not in teams:
-            continue
-        alias[row['r_label']['value']] = label
+    for filename in ('highschool_alias.json', 'proteam_alias.json'):
+        for row in json.load(open('data/' + filename)):
+            label = row['team_label']['value']
+            if label not in teams:
+                continue
+            alias[row['r_label']['value']] = label
     json.dump(
         alias, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
@@ -580,6 +604,7 @@ def main():
     #get_json(get_query(cname_query), 'cname')
     #get_json(get_query(club_query), 'club')
     #get_json(highschool_alias_query, 'highschool_alias')
+    #かなり修正を球団模様が変わるまで加えたので実行しない##get_json(proteam_alias_query, 'proteam_alias')
     make_data()
 
 if __name__ == '__main__':

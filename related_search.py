@@ -28,6 +28,11 @@ def favicon():
     abort(404)
 
 
+@app.route(u'/data', methods=['GET'])
+def data():
+    return render_template('data.html', target=u'data')
+
+
 @app.route(u'/使い方', methods=['GET'])
 def functions():
     return render_template('functions.html', target=u'使い方')

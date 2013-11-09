@@ -75,8 +75,8 @@ def data_build():
         u'ゴールデンイーグルス': u'東北楽天ゴールデンイーグルス',
         u'イーグルス': u'東北楽天ゴールデンイーグルス',
     }
-    h_alias = json.load(open('dump/highschool_alias.json'))
-    alias.update(h_alias)
+    team_alias = json.load(open('dump/team_alias.json'))
+    alias.update(team_alias)
     alias_reverse = defaultdict(list)
     for k, v in alias.iteritems():
         alias_reverse[v].append(k)

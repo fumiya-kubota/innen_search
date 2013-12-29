@@ -3,10 +3,14 @@ from flask import *
 from get_innen import data_build
 from datetime import datetime
 from collections import defaultdict
+import time
+
 app = Flask(__name__)
 
 PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
+UPTIME = int(time.time())
+
 
 
 REDIRECT_URL = frozenset([
@@ -16,6 +20,13 @@ REDIRECT_URL = frozenset([
 ])
 URL = u'http://innen-search.com{}'
 
+def build_context(ctxt=None):
+    context_base = {
+        'UPTIME': UPTIME
+    }
+    if ctxt:
+        context_base.update(ctxt)
+    return context_base
 
 @app.before_request
 def before_request():
@@ -30,17 +41,21 @@ def favicon():
 
 @app.route(u'/data', methods=['GET'])
 def data():
-    return render_template('data.html', target=u'data')
+    return render_template('data.html', **build_context({'target': 'data'}))
 
 
 @app.route(u'/使い方', methods=['GET'])
 def functions():
-    return render_template('functions.html', target=u'使い方')
+    return render_template('functions.html', **build_context({'target': u'使い方'}))
 
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
-    return render_template('team_list.html', teams_list=TEAMS_LIST[team_category], alias=ALIAS_REVERSE)
+    ctxt = {
+        'teams_list': TEAMS_LIST[team_category],
+        'alias': ALIAS_REVERSE
+    }
+    return render_template('team_list.html', **build_context(ctxt))
 
 
 DATA_KIND_PLAYER = 0
@@ -59,7 +74,7 @@ KIND2STORE = {
 @app.route('/<target>', methods=['GET'])
 def top(target=''):
     if not target:
-        return render_template('top.html')
+        return render_template('top.html', **build_context())
     target = ALIAS.get(target, target)
 
     kind = get_data_kind(target)
@@ -137,10 +152,17 @@ def player_list(target, kind):
     else:
         players = KIND2STORE[kind][target]
 
+    ctxt = {
+        'target': target
+    }
     if players:
         players = get_player_list(players, kind==DATA_KIND_GENERATION)
-        return render_template('list.html', target=target, players=players, kind=kind)
-    return render_template('not_found.html', target=target)
+        ctxt.update({
+            'players': players,
+            'kind': kind
+        })
+        return render_template('list.html', **build_context(ctxt))
+    return render_template('not_found.html', **build_context(ctxt))
 
 def player(player_name):
     target = PLAYERS[player_name]
@@ -150,7 +172,7 @@ def player(player_name):
         'get_teammate': get_teammate,
         'abs': abs
     }
-    return render_template('player.html', **ctxt)
+    return render_template('player.html', **build_context(ctxt))
 
 
 if __name__ == '__main__':

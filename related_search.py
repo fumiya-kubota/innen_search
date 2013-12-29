@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 app = Flask(__name__)
 
-players, teams, birthdate, areas, teams_list, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST = data_build()
+PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 
 
@@ -40,7 +40,7 @@ def functions():
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
-    return render_template('team_list.html', teams_list=teams_list[team_category], alias=ALIAS_REVERSE)
+    return render_template('team_list.html', teams_list=TEAMS_LIST[team_category], alias=ALIAS_REVERSE)
 
 
 DATA_KIND_PLAYER = 0
@@ -50,9 +50,9 @@ DATA_KIND_AREA = 3
 DATA_KIND_PREFIX = 4
 
 KIND2STORE = {
-    DATA_KIND_TEAM: teams,
-    DATA_KIND_GENERATION: birthdate,
-    DATA_KIND_AREA: areas
+    DATA_KIND_TEAM: TEAMS,
+    DATA_KIND_GENERATION: BIRTHDATE,
+    DATA_KIND_AREA: AREAS
 }
 
 @app.route('/', methods=['GET'])
@@ -69,13 +69,13 @@ def top(target=''):
 
 
 def get_data_kind(target):
-    if target in players:
+    if target in PLAYERS:
         return DATA_KIND_PLAYER
-    elif target in teams:
+    elif target in TEAMS:
         return DATA_KIND_TEAM
-    elif target in birthdate:
+    elif target in BIRTHDATE:
         return DATA_KIND_GENERATION
-    elif target in areas:
+    elif target in AREAS:
         return DATA_KIND_AREA
     else:
         return DATA_KIND_PREFIX
@@ -122,13 +122,13 @@ def prefix_search(target):
 
 def get_player_list(player_names, name=False):
     if name:
-        return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].cname if p[0].cname else p[1])
-    return sorted([(players[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
+        return sorted([(PLAYERS[pl], pl) for pl in player_names], key=lambda p:p[0].cname if p[0].cname else p[1])
+    return sorted([(PLAYERS[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
 
 
 def get_teammate(target, teamname, birth_year, diff):
     teammate_data = defaultdict(list)
-    [teammate_data[int(players[pl].birth_year)].append((players[pl], pl)) for pl in teams[teamname] if pl != target and players[pl].birth_year and abs(int(players[pl].birth_year) - int(birth_year)) <= diff]
+    [teammate_data[int(PLAYERS[pl].birth_year)].append((PLAYERS[pl], pl)) for pl in TEAMS[teamname] if pl != target and PLAYERS[pl].birth_year and abs(int(PLAYERS[pl].birth_year) - int(birth_year)) <= diff]
     return teammate_data
 
 def player_list(target, kind):
@@ -143,7 +143,7 @@ def player_list(target, kind):
     return render_template('not_found.html', target=target)
 
 def player(player_name):
-    target = players[player_name]
+    target = PLAYERS[player_name]
     ctxt = {
         'target': player_name,
         'info': target,

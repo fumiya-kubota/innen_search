@@ -81,10 +81,8 @@ def data_build():
     for k, v in alias.iteritems():
         alias_reverse[v].append(k)
 
+    highschool_pref = json.load(open('dump/highschool_pref.json'))
+
     sorted_players = tuple(json.load(open('dump/sorted_players_list.json')))
-    return players, dict(teams), dict(birth_year), dict(areas), teams_list, alias, alias_reverse, sorted_players
-
-
-
-
+    return players, dict(teams), dict(birth_year), dict(areas), teams_list, alias, alias_reverse, sorted_players, highschool_pref
 

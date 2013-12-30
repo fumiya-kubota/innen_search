@@ -14,6 +14,10 @@
 <h2>{{ kind_name }}：<span id="st">{{ target }}</span></h2>
 {% if kind == 1 %}
   <p><a href="http://ja.wikipedia.org/wiki/{{ target }}">http://ja.wikipedia/wiki/{{ target }}</a></p>
+  {% if target in info %}
+    <h5 ><strong>{{ info[target][0] }}</strong></h5>
+    <p>{{ info[target][1] }}</p>
+  {% endif %}
 {% elif kind == 2 %}
   <input type="range" id="year_bar" max="2000" min="1900" value="{{ target }}" style="width: 100%" />
 {% endif %}

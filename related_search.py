@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__)
 
-PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST = data_build()
+PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST, TEAM_INFO = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 UPTIME = int(time.time())
 
@@ -116,7 +116,7 @@ def prefix_search(target):
     if idx:
         up = down = True
         search = 1
-        players = {SORTED_PLAYERS_LIST[idx]}
+        players = set(SORTED_PLAYERS_LIST[idx])
         while up or down:
             if up:
                 name = SORTED_PLAYERS_LIST[idx - search]
@@ -131,7 +131,6 @@ def prefix_search(target):
                 else:
                     down = False
             search += 1
-
         return players
 
 
@@ -159,7 +158,8 @@ def player_list(target, kind):
         players = get_player_list(players, kind==DATA_KIND_GENERATION)
         ctxt.update({
             'players': players,
-            'kind': kind
+            'kind': kind,
+            'info': TEAM_INFO
         })
         return render_template('list.html', **build_context(ctxt))
     return render_template('not_found.html', **build_context(ctxt))

@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__)
 
-PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST, TEAM_INFO = data_build()
+PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST, TEAM_INFO, LEAGE_TEAMS = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 UPTIME = int(time.time())
 
@@ -33,21 +33,38 @@ def before_request():
     if request.host in REDIRECT_URL:
         return redirect(URL.format(request.path) , 301)
 
-
 @app.route('/favicon.ico', methods=['GET'])
 def favicon():
     abort(404)
+
+
+@app.route('/api/LeageByTeams/<leage>', methods=['GET'])
+def leage_by_teams(leage):
+    return jsonify({'teams': LEAGE_TEAMS[leage]})
+
+@app.route('/api/TeamByPlayers/<team>', methods=['GET'])
+def team_by_players(team):
+    return jsonify({'players': [PLAYERS[pl].dump(pl) for pl in TEAMS[team]]})
+
+@app.route('/leage', methods=['GET'])
+@app.route('/leage/<leage_name>', methods=['GET'])
+def leage(leage_name=None):
+    if leage_name:
+        ctxt = {
+            'leage': leage_name,
+        }
+        return render_template('leage.html', **build_context(ctxt))
+    else:
+        return render_template('leage.html', **build_context())
 
 
 @app.route(u'/data', methods=['GET'])
 def data():
     return render_template('data.html', **build_context({'target': 'data'}))
 
-
 @app.route(u'/使い方', methods=['GET'])
 def functions():
     return render_template('functions.html', **build_context({'target': u'使い方'}))
-
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
@@ -116,7 +133,7 @@ def prefix_search(target):
     if idx:
         up = down = True
         search = 1
-        players = set(SORTED_PLAYERS_LIST[idx])
+        players = {SORTED_PLAYERS_LIST[idx]}
         while up or down:
             if up:
                 name = SORTED_PLAYERS_LIST[idx - search]
@@ -145,12 +162,12 @@ def get_teammate(target, teamname, birth_year, diff):
     [teammate_data[int(PLAYERS[pl].birth_year)].append((PLAYERS[pl], pl)) for pl in TEAMS[teamname] if pl != target and PLAYERS[pl].birth_year and abs(int(PLAYERS[pl].birth_year) - int(birth_year)) <= diff]
     return teammate_data
 
+
 def player_list(target, kind):
     if kind == DATA_KIND_PREFIX:
         players = prefix_search(target)
     else:
         players = KIND2STORE[kind][target]
-
     ctxt = {
         'target': target
     }
@@ -163,6 +180,7 @@ def player_list(target, kind):
         })
         return render_template('list.html', **build_context(ctxt))
     return render_template('not_found.html', **build_context(ctxt))
+
 
 def player(player_name):
     target = PLAYERS[player_name]

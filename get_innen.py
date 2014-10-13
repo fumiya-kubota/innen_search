@@ -83,11 +83,11 @@ def data_build():
 
     highschool_pref = json.load(open('dump/highschool_pref.json'))
     highschool_pref = {key: highschool_pref[key] for key in highschool_pref if key in teams}
-    leage_teams = defaultdict(list)
+    league_teams = defaultdict(list)
     for k, v in highschool_pref.iteritems():
-        leage_teams[v[0]].append(k)
+        league_teams[v[0]].append(k)
 
     sorted_players = tuple(json.load(open('dump/sorted_players_list.json')))
     return players, dict(teams), dict(birth_year), dict(
-        areas), teams_list, alias, alias_reverse, sorted_players, highschool_pref, leage_teams
+        areas), teams_list, alias, alias_reverse, sorted_players, highschool_pref, league_teams
 

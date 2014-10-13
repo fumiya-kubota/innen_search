@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__)
 
-PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST, TEAM_INFO, LEAGE_TEAMS = data_build()
+PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYERS_LIST, TEAM_INFO, LEAGUE_TEAMS = data_build()
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 UPTIME = int(time.time())
 
@@ -39,9 +39,9 @@ def favicon():
     abort(404)
 
 
-@app.route('/api/LeageByTeams/<leage>', methods=['GET'])
-def leage_by_teams(leage):
-    return jsonify({'teams': LEAGE_TEAMS[leage]})
+@app.route('/api/LeageByTeams/<league>', methods=['GET'])
+def league_by_teams(league):
+    return jsonify({'teams': LEAGUE_TEAMS[league]})
 
 
 @app.route('/api/TeamByPlayers/<team>', methods=['GET'])
@@ -49,16 +49,16 @@ def team_by_players(team):
     return jsonify({'players': [PLAYERS[pl].dump(pl) for pl in TEAMS[team]]})
 
 
-@app.route('/leage', methods=['GET'])
-@app.route('/leage/<leage_name>', methods=['GET'])
-def leage(leage_name=None):
-    if leage_name:
+@app.route('/league', methods=['GET'])
+@app.route('/league/<league_name>', methods=['GET'])
+def league(league_name=None):
+    if league_name:
         ctxt = {
-            'leage': leage_name,
+            'league': league_name,
         }
-        return render_template('leage.html', **build_context(ctxt))
+        return render_template('league.html', **build_context(ctxt))
     else:
-        return render_template('leage.html', **build_context())
+        return render_template('league.html', **build_context())
 
 
 @app.route(u'/data', methods=['GET'])

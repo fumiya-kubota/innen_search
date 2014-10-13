@@ -1,5 +1,4 @@
-
-#coding: utf-8
+# coding: utf-8
 from SPARQLWrapper import SPARQLWrapper, JSON
 import re
 from datetime import datetime
@@ -16,6 +15,7 @@ YEAR_REGX = re.compile(ur'\d{4}年')
 nums = frozenset(map(str, xrange(10)))
 
 data_dir = 'data'
+
 
 def parse_date(birthdate):
     return datetime.strptime(birthdate, '%Y-%m-%d')
@@ -43,6 +43,7 @@ def parse_abstract(abstract):
         candidate.append(datetime(int(date[:4]), 4, 2))
     if candidate:
         return min(candidate)
+
 
 def label_common(label):
     #ラベルでも(野球)は辞書内で重複する可能性はないので取り除く
@@ -379,12 +380,11 @@ def make_data():
         if 'division' in data:
             club[label]['division'] = data['division']['value']
 
-
     teams = {}
     teams_list = {}
 
-    COLLEGE_NAMES = set()
-    COLLEGE_NAME_FIX = {
+    college_names = set()
+    college_name_fix = {
         u'東京農業大学北海道オホーツク硬式野球部': u'東京農業大学北海道',
         u'慶應義塾体育会野球部': u'慶應義塾大学',
         u'早稲田大学野球部': u'早稲田大学',
@@ -392,13 +392,14 @@ def make_data():
         u'法政大学野球部': u'法政大学',
         u'近畿大学体育会硬式野球部': u'近畿大学'
     }
-    def college_tean_name(teamname):
-        teamname = COLLEGE_NAME_FIX.get(teamname, teamname)
-        if teamname.endswith(u'硬式野球部'):
-            return teamname[:-5]
-        elif teamname.endswith(u'野球部'):
-            return teamname[:-3]
-        return teamname
+
+    def college_team_name(team_name):
+        team_name = college_name_fix.get(team_name, team_name)
+        if team_name.endswith(u'硬式野球部'):
+            return team_name[:-5]
+        elif team_name.endswith(u'野球部'):
+            return team_name[:-3]
+        return team_name
 
     filename = os.path.join(data_dir, 'college_team.json')
     with open(filename) as fp:
@@ -406,19 +407,18 @@ def make_data():
     category_teams = defaultdict(set)
     for data in college_data:
         label, label_end = label_common_first(data['label']['value'])
-        teamname = data['team_label']['value']
+        team_name = data['team_label']['value']
         player = players[label]
         if label_end:
             player.label_end = label_end
-        COLLEGE_NAMES.add(teamname)
-        teamname = college_tean_name(teamname)
-        COLLEGE_NAMES.add(teamname)
+        college_names.add(team_name)
+        team_name = college_team_name(team_name)
+        college_names.add(team_name)
         player.cname = cname.get(label, label)
-        category_teams[teamname].add(label)
-        player.college.add(teamname)
+        category_teams[team_name].add(label)
+        player.college.add(team_name)
     teams_list['college'] = sorted(list(category_teams))
     teams.update(category_teams)
-
 
     for category in ('highschool', 'pro', 'others'):
         category_teams = defaultdict(set)
@@ -427,19 +427,19 @@ def make_data():
             teams_data = json.load(fp)
         for data in teams_data:
             label, label_end = label_common_first(data['label']['value'])
-            teamname = data['team_label']['value']
-            if teamname in COLLEGE_NAMES:
+            team_name = data['team_label']['value']
+            if team_name in college_names:
                 continue
-            if teamname.endswith(u'硬式野球部'):
-                teamname = teamname[:-5]
-            elif teamname.endswith(u'野球部'):
-                teamname = teamname[:-3]
+            if team_name.endswith(u'硬式野球部'):
+                team_name = team_name[:-5]
+            elif team_name.endswith(u'野球部'):
+                team_name = team_name[:-3]
             player = players[label]
             if label_end:
                 player.label_end = label_end
 
-            getattr(player, category).add(teamname)
-            category_teams[teamname].add(label)
+            getattr(player, category).add(team_name)
+            category_teams[team_name].add(label)
             player.cname = cname.get(label, label)
             current_state = club.get(label)
             if current_state:
@@ -451,10 +451,9 @@ def make_data():
 
     for k in teams_list:
         member_num = [(team, len(teams[team])) for team in teams_list[k]]
-        teams_list[k] = sorted(member_num, key=lambda x:x[1], reverse=True)
+        teams_list[k] = sorted(member_num, key=lambda x: x[1], reverse=True)
 
     del category_teams
-
 
     filename = os.path.join(data_dir, 'birthdate.json')
     with open(filename) as fp:
@@ -507,8 +506,6 @@ def make_data():
             player.add_area(ht['value'])
             areas[ht['value']].add(label)
 
-
-
     my_fix(players)
 
     dump_file = open('dump/dump.json', 'w')
@@ -534,7 +531,6 @@ def make_data():
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
     dump_file.close()
 
-
     dump_file = open('dump/sorted_players_list.json', 'w')
     dump_file = codecs.lookup('utf-8')[-1](dump_file)
     alias = {}
@@ -543,6 +539,7 @@ def make_data():
         players_list, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2)
     dump_file.close()
+
 
 def my_fix(players):
     players[u'小谷正勝'].is_active = False
@@ -606,6 +603,7 @@ def main():
     #get_json(highschool_alias_query, 'highschool_alias')
     #かなり修正を球団模様が変わるまで加えたので実行しない##get_json(proteam_alias_query, 'proteam_alias')
     make_data()
+
 
 if __name__ == '__main__':
     main()

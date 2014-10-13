@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 import json
 from collections import defaultdict
 from player import Player, player_from_dict
@@ -36,7 +36,7 @@ def data_build():
             areas[a].add(k)
         birth_year[str(v.birth_year)].add(k)
     for k in teams_list:
-        teams_list[k] = tuple(sorted([tn for tn in teams_list[k].iteritems()], key=lambda x:x[1], reverse=True))
+        teams_list[k] = tuple(sorted([tn for tn in teams_list[k].iteritems()], key=lambda x: x[1], reverse=True))
 
     alias = {
         u'阪神': u'阪神タイガース',
@@ -82,11 +82,12 @@ def data_build():
         alias_reverse[v].append(k)
 
     highschool_pref = json.load(open('dump/highschool_pref.json'))
-    highschool_pref = {key:highschool_pref[key] for key in highschool_pref if key in teams}
+    highschool_pref = {key: highschool_pref[key] for key in highschool_pref if key in teams}
     leage_teams = defaultdict(list)
     for k, v in highschool_pref.iteritems():
         leage_teams[v[0]].append(k)
 
     sorted_players = tuple(json.load(open('dump/sorted_players_list.json')))
-    return players, dict(teams), dict(birth_year), dict(areas), teams_list, alias, alias_reverse, sorted_players, highschool_pref, leage_teams
+    return players, dict(teams), dict(birth_year), dict(
+        areas), teams_list, alias, alias_reverse, sorted_players, highschool_pref, leage_teams
 

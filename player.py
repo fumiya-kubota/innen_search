@@ -1,10 +1,11 @@
-#coding: utf-8
+# coding: utf-8
 from datetime import datetime
+
 
 class Player(object):
     def __init__(self):
         super(Player, self).__init__()
-        #転校したりしている可能性がある
+        # 転校したりしている可能性がある
         #張本勲を参照
         self.label = None
         self.cname = None
@@ -44,7 +45,8 @@ class Player(object):
             'pro': tuple(self.pro),
             'others': tuple(self.others),
             'areas': tuple(self.areas),
-            'birth_date': '{}-{}-{}'.format(self.birth_date.year, self.birth_date.month, self.birth_date.day) if self.birth_date else None,
+            'birth_date': '{}-{}-{}'.format(self.birth_date.year, self.birth_date.month,
+                                            self.birth_date.day) if self.birth_date else None,
             'abstract': self.abstract,
             'current_club': self.current_club,
             'is_active': self.is_active
@@ -52,6 +54,7 @@ class Player(object):
         if hasattr(self, 'label_end'):
             dump_data['label_end'] = self.label_end
         return dump_data
+
 
 def player_from_dict(data):
     pl = Player()

@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 from flask import *
 from get_innen import data_build
 from datetime import datetime
@@ -11,14 +11,13 @@ PLAYERS, TEAMS, BIRTHDATE, AREAS, TEAMS_LIST, ALIAS, ALIAS_REVERSE, SORTED_PLAYE
 PLAYERS_LENGTH = len(SORTED_PLAYERS_LIST)
 UPTIME = int(time.time())
 
-
-
 REDIRECT_URL = frozenset([
     'www.innen-search.com',
     'innen-search.herokuapp.com',
     'innen-search.heroku.com',
 ])
 URL = u'http://innen-search.com{}'
+
 
 def build_context(ctxt=None):
     context_base = {
@@ -28,10 +27,12 @@ def build_context(ctxt=None):
         context_base.update(ctxt)
     return context_base
 
+
 @app.before_request
 def before_request():
     if request.host in REDIRECT_URL:
-        return redirect(URL.format(request.path) , 301)
+        return redirect(URL.format(request.path), 301)
+
 
 @app.route('/favicon.ico', methods=['GET'])
 def favicon():
@@ -42,9 +43,11 @@ def favicon():
 def leage_by_teams(leage):
     return jsonify({'teams': LEAGE_TEAMS[leage]})
 
+
 @app.route('/api/TeamByPlayers/<team>', methods=['GET'])
 def team_by_players(team):
     return jsonify({'players': [PLAYERS[pl].dump(pl) for pl in TEAMS[team]]})
+
 
 @app.route('/leage', methods=['GET'])
 @app.route('/leage/<leage_name>', methods=['GET'])
@@ -62,9 +65,11 @@ def leage(leage_name=None):
 def data():
     return render_template('data.html', **build_context({'target': 'data'}))
 
+
 @app.route(u'/使い方', methods=['GET'])
 def functions():
     return render_template('functions.html', **build_context({'target': u'使い方'}))
+
 
 @app.route('/<any(highschool, college, others, pro):team_category>', methods=['GET'])
 def show_teams(team_category):
@@ -86,6 +91,7 @@ KIND2STORE = {
     DATA_KIND_GENERATION: BIRTHDATE,
     DATA_KIND_AREA: AREAS
 }
+
 
 @app.route('/', methods=['GET'])
 @app.route('/<target>', methods=['GET'])
@@ -111,6 +117,7 @@ def get_data_kind(target):
         return DATA_KIND_AREA
     else:
         return DATA_KIND_PREFIX
+
 
 def binary_search(word):
     s = PLAYERS_LENGTH
@@ -153,13 +160,15 @@ def prefix_search(target):
 
 def get_player_list(player_names, name=False):
     if name:
-        return sorted([(PLAYERS[pl], pl) for pl in player_names], key=lambda p:p[0].cname if p[0].cname else p[1])
-    return sorted([(PLAYERS[pl], pl) for pl in player_names], key=lambda p:p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
+        return sorted([(PLAYERS[pl], pl) for pl in player_names], key=lambda p: p[0].cname if p[0].cname else p[1])
+    return sorted([(PLAYERS[pl], pl) for pl in player_names],
+                  key=lambda p: p[0].birth_date if p[0].birth_date else datetime(1, 1, 1), reverse=True)
 
 
 def get_teammate(target, teamname, birth_year, diff):
     teammate_data = defaultdict(list)
-    [teammate_data[int(PLAYERS[pl].birth_year)].append((PLAYERS[pl], pl)) for pl in TEAMS[teamname] if pl != target and PLAYERS[pl].birth_year and abs(int(PLAYERS[pl].birth_year) - int(birth_year)) <= diff]
+    [teammate_data[int(PLAYERS[pl].birth_year)].append((PLAYERS[pl], pl)) for pl in TEAMS[teamname] if
+     pl != target and PLAYERS[pl].birth_year and abs(int(PLAYERS[pl].birth_year) - int(birth_year)) <= diff]
     return teammate_data
 
 
@@ -172,7 +181,7 @@ def player_list(target, kind):
         'target': target
     }
     if players:
-        players = get_player_list(players, kind==DATA_KIND_GENERATION)
+        players = get_player_list(players, kind == DATA_KIND_GENERATION)
         ctxt.update({
             'players': players,
             'kind': kind,

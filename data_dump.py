@@ -21,7 +21,7 @@ def parse_date(birthdate):
     return datetime.strptime(birthdate, '%Y-%m-%d')
 
 
-#例1清水 宏員（しみず ひろかず、1933年4月14日 - ）は、日本のプロ野球選手（投手）。
+# 例1清水 宏員（しみず ひろかず、1933年4月14日 - ）は、日本のプロ野球選手（投手）。
 #例2新庄 剛志（しんじょう つよし、1972年（昭和47年）1月28日 - ）
 def parse_abstract(abstract):
     #例2のような年号を取り除く
@@ -526,6 +526,45 @@ def make_data():
             if label not in teams:
                 continue
             alias[row['r_label']['value']] = label
+    alias.update(
+        {
+            u'阪神': u'阪神タイガース',
+            u'タイガース': u'阪神タイガース',
+            u'読売': u'読売ジャイアンツ',
+            u'巨人': u'読売ジャイアンツ',
+            u'ジャイアンツ': u'読売ジャイアンツ',
+            u'中日': u'中日ドラゴンズ',
+            u'ドラゴンズ': u'中日ドラゴンズ',
+            u'ホークス': u'福岡ソフトバンクホークス',
+            u'ソフトバンク': u'福岡ソフトバンクホークス',
+            u'日本ハム': u'北海道日本ハムファイターズ',
+            u'ファイターズ': u'北海道日本ハムファイターズ',
+            u'日ハム': u'北海道日本ハムファイターズ',
+            u'オリックス': u'オリックス・バファローズ',
+            u'バファローズ': u'オリックス・バファローズ',
+            u'DeNA': u'横浜DeNAベイスターズ',
+            u'ベイスターズ': u'横浜DeNAベイスターズ',
+            u'横浜': u'横浜DeNAベイスターズ',
+            u'ライオンズ': u'埼玉西武ライオンズ',
+            u'埼玉西武': u'埼玉西武ライオンズ',
+            u'西武': u'埼玉西武ライオンズ',
+            u'千葉ロッテ': u'千葉ロッテマリーンズ',
+            u'ロッテ': u'千葉ロッテマリーンズ',
+            u'マリーンズ': u'千葉ロッテマリーンズ',
+            u'広島': u'広島東洋カープ',
+            u'広島東洋': u'広島東洋カープ',
+            u'カープ': u'広島東洋カープ',
+            u'東京ヤクルト': u'東京ヤクルトスワローズ',
+            u'ヤクルト': u'東京ヤクルトスワローズ',
+            u'スワローズ': u'東京ヤクルトスワローズ',
+            u'近鉄': u'大阪近鉄バファローズ',
+            u'大阪近鉄': u'大阪近鉄バファローズ',
+            u'楽天': u'東北楽天ゴールデンイーグルス',
+            u'東北楽天': u'東北楽天ゴールデンイーグルス',
+            u'ゴールデンイーグルス': u'東北楽天ゴールデンイーグルス',
+            u'イーグルス': u'東北楽天ゴールデンイーグルス',
+        }
+    )
     json.dump(
         alias, dump_file,
         ensure_ascii=False, encoding='utf-8', indent=2, sort_keys=True)
@@ -533,7 +572,6 @@ def make_data():
 
     dump_file = open('dump/sorted_players_list.json', 'w')
     dump_file = codecs.lookup('utf-8')[-1](dump_file)
-    alias = {}
     players_list = sorted([label for label in players])
     json.dump(
         players_list, dump_file,

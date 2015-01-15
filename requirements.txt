@@ -8,6 +8,7 @@ html5lib==1.0b3
 isodate==0.4.9
 itsdangerous==0.23
 pyparsing==1.5.7
+python-dateutil==2.4.0
 rdflib==4.0.1
-six==1.4.1
+six==1.9.0
 wsgiref==0.1.2

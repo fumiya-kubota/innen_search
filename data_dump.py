@@ -7,6 +7,7 @@ import json
 import codecs
 import os
 from player import Player, player_from_dict
+import dateutil.parser
 
 DATE_REGX = re.compile(ur'\d{4}年\d{1,2}月\d{1,2}日')
 NENGO_REGX = re.compile(ur'[（\(]..\d{1,2}年[）\)]')
@@ -18,11 +19,11 @@ data_dir = 'data'
 
 
 def parse_date(birthdate):
-    return datetime.strptime(birthdate, '%Y-%m-%d')
+    return dateutil.parser.parse(birthdate, fuzzy=True)
 
 
 # 例1清水 宏員（しみず ひろかず、1933年4月14日 - ）は、日本のプロ野球選手（投手）。
-#例2新庄 剛志（しんじょう つよし、1972年（昭和47年）1月28日 - ）
+# 例2新庄 剛志（しんじょう つよし、1972年（昭和47年）1月28日 - ）
 def parse_abstract(abstract):
     #例2のような年号を取り除く
     candidate = []
@@ -629,16 +630,16 @@ def main():
         print query
         return query
 
-    #get_json(get_query(highschool_query), 'highschool_team')
-    #get_json(get_query(college_query), 'college_team')
-    #get_json(get_query(pro_query), 'pro_team')
-    #get_json(get_query(others_query), 'others_team')
-    #get_json(get_query(abstract_query), 'abstract')
-    #get_json(get_query(birth_query), 'birthdate')
-    #get_json(get_query(pref_query), 'area')
-    #get_json(get_query(cname_query), 'cname')
-    #get_json(get_query(club_query), 'club')
-    #get_json(highschool_alias_query, 'highschool_alias')
+    get_json(get_query(highschool_query), 'highschool_team')
+    get_json(get_query(college_query), 'college_team')
+    get_json(get_query(pro_query), 'pro_team')
+    get_json(get_query(others_query), 'others_team')
+    get_json(get_query(abstract_query), 'abstract')
+    get_json(get_query(birth_query), 'birthdate')
+    get_json(get_query(pref_query), 'area')
+    get_json(get_query(cname_query), 'cname')
+    get_json(get_query(club_query), 'club')
+    get_json(highschool_alias_query, 'highschool_alias')
     #かなり修正を球団模様が変わるまで加えたので実行しない##get_json(proteam_alias_query, 'proteam_alias')
     make_data()
 

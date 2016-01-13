@@ -52567,7 +52567,7 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "チコ・アウトローズ", 
+      "value": "三菱重工名古屋硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -52591,6 +52591,18 @@
     }, 
     "team_label": {
       "type": "literal", 
+      "value": "ヤマハ硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "ジョー・マツモト", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
       "value": "ケベック・キャピタルズ", 
       "xml:lang": "ja"
     }
@@ -52603,19 +52615,19 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "ヤマハ硬式野球部", 
+      "value": "チコ・アウトローズ", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "ジョー・マツモト", 
+      "value": "ロドリゴ宮本", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "三菱重工名古屋硬式野球部", 
+      "value": "ヤマハ硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -52628,18 +52640,6 @@
     "team_label": {
       "type": "literal", 
       "value": "ミキハウス硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "ロドリゴ宮本", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "ヤマハ硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -52663,7 +52663,7 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "Honda硬式野球部", 
+      "value": "白鴎大学", 
       "xml:lang": "ja"
     }
   }, 
@@ -52675,7 +52675,7 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "白鴎大学", 
+      "value": "Honda硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -52747,7 +52747,7 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "東芝硬式野球部", 
+      "value": "亜細亜大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -52759,7 +52759,7 @@
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "亜細亜大学硬式野球部", 
+      "value": "東芝硬式野球部", 
       "xml:lang": "ja"
     }
   }, 

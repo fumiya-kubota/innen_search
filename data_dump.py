@@ -63,13 +63,13 @@ def label_common_first(label):
 target_player = u'''
         #対象は日本人の野球選手
         {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
+            ?person dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:日本の野球選手> .
         } union {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:MLBの日本人選手> .
+            ?person dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:MLBの日本人選手> .
         } union {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:在日外国人の野球選手> .
+            ?person dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:在日外国人の野球選手> .
         } union {
-            ?person dcterms:subject <http://ja.dbpedia.org/resource/Category:日系人の野球選手> .
+            ?person dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:日系人の野球選手> .
         }
 '''
 
@@ -131,6 +131,8 @@ college_query = u'''
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dcterms: <http://purl.org/dc/terms/>
     PREFIX dbpprop-ja: <http://ja.dbpedia.org/property/>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
     select distinct ?label ?team_label
     where {
@@ -140,23 +142,25 @@ college_query = u'''
             dbp-owl:team ?team.
         {
             ?team dbp-owl:wikiPageRedirects ?redirects .
-            ?redirects dcterms:subject ?category .
+            ?redirects dbp-owl:wikiPageWikiLink ?category .
+            ?category rdf:type skos:Concept .
             ?category rdfs:label ?category_label .
             FILTER regex(?category_label, "大学")
             ?redirects rdfs:label ?team_label .
             FILTER NOT EXISTS {
-                ?redirects dcterms:subject <http://ja.dbpedia.org/resource/Category:アマチュア野球チーム> .
+                ?redirects dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:アマチュア野球チーム> .
             }
             FILTER NOT EXISTS {
                 ?redirects dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .
             }
         } union {
-            ?team dcterms:subject ?category .
+            ?team dbp-owl:wikiPageWikiLink ?category .
+            ?category rdf:type skos:Concept .
             ?category rdfs:label ?category_label .
             FILTER regex(?category_label, "大学")
             ?team rdfs:label ?team_label .
             FILTER NOT EXISTS {
-                ?team dcterms:subject <http://ja.dbpedia.org/resource/Category:アマチュア野球チーム> .
+                ?team dbp-owl:wikiPageWikiLink <http://ja.dbpedia.org/resource/Category:アマチュア野球チーム> .
             }
             FILTER NOT EXISTS {
                 ?team dbpprop-ja:wikiPageUsesTemplate <http://ja.dbpedia.org/resource/Template:日本の高等学校> .

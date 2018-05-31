@@ -2,6 +2,30 @@
   {
     "label": {
       "type": "literal", 
+      "value": "安藤統男", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "土井正三", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "中村隼人", 
       "xml:lang": "ja"
     }, 
@@ -14,12 +38,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "安藤統男", 
+      "value": "中村隼人", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
+      "value": "中信兄弟", 
       "xml:lang": "ja"
     }
   }, 
@@ -44,30 +68,6 @@
     "team_label": {
       "type": "literal", 
       "value": "リッカー", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "土井正三", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中村隼人", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
       "xml:lang": "ja"
     }
   }, 
@@ -146,6 +146,30 @@
   {
     "label": {
       "type": "literal", 
+      "value": "石川賢 (1981年生の投手)", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "八戸学院大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "竹内和也 (野球)", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "横浜中央クラブ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "竹内和也 (野球)", 
       "xml:lang": "ja"
     }, 
@@ -158,12 +182,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "喜多隆志", 
+      "value": "金剛弘樹", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
+      "value": "朝日生命保険", 
       "xml:lang": "ja"
     }
   }, 
@@ -183,18 +207,6 @@
     "label": {
       "type": "literal", 
       "value": "高木大成", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "宮崎要", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -230,48 +242,24 @@
   {
     "label": {
       "type": "literal", 
-      "value": "竹内和也 (野球)", 
+      "value": "喜多隆志", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "横浜中央クラブ", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "石川賢 (1981年生の投手)", 
+      "value": "宮崎要", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "八戸学院大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "金剛弘樹", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "朝日生命保険", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "御園生崇男", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "関西大学野球部", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -302,84 +290,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "澤井良輔", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "千葉熱血MAKING", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "花井悠", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "浜崎真二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "青島健太", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "藤井栄治", 
+      "value": "御園生崇男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "関西大学野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "田中義雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "ハワイ大学システム", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "門倉健", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
       "xml:lang": "ja"
     }
   }, 
@@ -410,12 +326,96 @@
   {
     "label": {
       "type": "literal", 
-      "value": "今関勝", 
+      "value": "浜崎真二", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "WIEN'Z", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "澤井良輔", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "千葉熱血MAKING", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "田中義雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "ハワイ大学システム", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "花井悠", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "藤井栄治", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "関西大学野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "門倉健", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "青島健太", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中井伸之", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中華職業棒球大聯盟", 
       "xml:lang": "ja"
     }
   }, 
@@ -428,6 +428,66 @@
     "team_label": {
       "type": "literal", 
       "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中込伸", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "今井圭吾", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "今関勝", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "WIEN'Z", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "伊代野貴照", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "伊藤幸男", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "積水化学工業", 
       "xml:lang": "ja"
     }
   }, 
@@ -452,6 +512,30 @@
     "team_label": {
       "type": "literal", 
       "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "和田貴範", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "新日鐵住金かずさマジック", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "堀本律雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -494,108 +578,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "堀本律雄", 
+      "value": "富恵一", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中井伸之", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中華職業棒球大聯盟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "和田貴範", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "新日鐵住金かずさマジック", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "今井圭吾", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "伊代野貴照", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中込伸", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "伊藤幸男", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "積水化学工業", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "平桝敏男", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "新田恭一", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
+      "value": "関西大学野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -603,6 +591,54 @@
     "label": {
       "type": "literal", 
       "value": "小川年安", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "小林亮寛", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "山内和宏", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "リッカー", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "川頭秀人", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "鮮ど市場ゴールデンラークス", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "平桝敏男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -626,24 +662,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "富恵一", 
+      "value": "斉藤肇", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "関西大学野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "川頭秀人", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鮮ど市場ゴールデンラークス", 
+      "value": "中信兄弟", 
       "xml:lang": "ja"
     }
   }, 
@@ -662,24 +686,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "山内和宏", 
+      "value": "新田恭一", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "リッカー", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "本屋敷錦吾", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -698,48 +710,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "斉藤肇", 
+      "value": "本屋敷錦吾", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "小林亮寛", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "浜名千広", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鳥取Pear Kings", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "池田英俊", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "立教大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -770,6 +746,102 @@
   {
     "label": {
       "type": "literal", 
+      "value": "池田英俊", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "浜名千広", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "鳥取Pear Kings", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "白坂勝史", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "真田裕貴", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "矢作光一", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "矢野英司", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "ピッツフィールド・コロニアルズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "石原照夫", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "石垣一夫", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "常磐炭田", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "礒恒之", 
       "xml:lang": "ja"
     }, 
@@ -794,24 +866,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "辻竜太郎", 
+      "value": "羽根川竜", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "明治大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "西村幸生", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "関西大学野球部", 
+      "value": "中信兄弟", 
       "xml:lang": "ja"
     }
   }, 
@@ -830,48 +890,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "石原照夫", 
+      "value": "西村幸生", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "矢作光一", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "野口裕美", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "石垣一夫", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "常磐炭田", 
+      "value": "関西大学野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -890,6 +914,30 @@
   {
     "label": {
       "type": "literal", 
+      "value": "辻竜太郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "野口裕美", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "金本誠吉", 
       "xml:lang": "ja"
     }, 
@@ -902,7 +950,31 @@
   {
     "label": {
       "type": "literal", 
-      "value": "羽根川竜", 
+      "value": "青山浩二", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "八戸学院大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "飯島一彦", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "新日鐵住金かずさマジック", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "養父鉄", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -914,36 +986,72 @@
   {
     "label": {
       "type": "literal", 
-      "value": "真田裕貴", 
+      "value": "高山智行", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "中信兄弟", 
+      "value": "サムスン・ライオンズ", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "白坂勝史", 
+      "value": "龍隆行", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "中信兄弟", 
+      "value": "グローバルリーグ", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "矢野英司", 
+      "value": "三輪悟", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "ピッツフィールド・コロニアルズ", 
+      "value": "信越硬式野球クラブ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中井悦雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "関西大学野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中原勇", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "JX金属", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中根之", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -986,24 +1094,24 @@
   {
     "label": {
       "type": "literal", 
-      "value": "井石礼司", 
+      "value": "井上親一郎", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
+      "value": "鉄道管理局", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "中根之", 
+      "value": "井石礼司", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1022,156 +1130,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "中井悦雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "関西大学野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "青山浩二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "八戸学院大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "高山智行", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "飯島一彦", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "新日鐵住金かずさマジック", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "井上親一郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鉄道管理局", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "龍隆行", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "グローバルリーグ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "養父鉄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "三輪悟", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "信越硬式野球クラブ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中原勇", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "JX金属", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "吉田義男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "立命館大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "山口富士雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "小林太志", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "太田龍生", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
       "xml:lang": "ja"
     }
   }, 
@@ -1190,12 +1154,48 @@
   {
     "label": {
       "type": "literal", 
+      "value": "太田龍生", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "小林太志", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "小林経旺", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "国立台中科技大学", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "山口富士雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1214,60 +1214,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "志村亮", 
+      "value": "山田利昭", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "WIEN'Z", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "志村亮", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "平古場昭二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "成田啓二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "岩本信一", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "立教大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1286,31 +1238,7 @@
   {
     "label": {
       "type": "literal", 
-      "value": "山田利昭", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "渡辺泰輔", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "樽井清一", 
+      "value": "岩本信一", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -1322,19 +1250,67 @@
   {
     "label": {
       "type": "literal", 
-      "value": "日下章", 
+      "value": "平古場昭二", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "関西大学野球部", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "村瀬広基", 
+      "value": "志村亮", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "志村亮", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "WIEN'Z", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "成田啓二", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "新井峰秀", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "日下章", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -1358,18 +1334,6 @@
   {
     "label": {
       "type": "literal", 
-      "value": "新井峰秀", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "杉本正志", 
       "xml:lang": "ja"
     }, 
@@ -1382,12 +1346,132 @@
   {
     "label": {
       "type": "literal", 
+      "value": "村瀬広基", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "関西大学野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "樽井清一", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "渡辺泰輔", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "片山文男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "YBC柏", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "田中実 (外野手)", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "田島俊雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "中信兄弟", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "石山一秀", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "竹下哲史", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "エディオン愛工大OBブリッツ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "竹田光訓", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "サムスン・ライオンズ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "米田慶三郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "デンカ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "菅原道裕", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1418,12 +1502,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "菅原道裕", 
+      "value": "足利豊", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "中華職業棒球大聯盟", 
       "xml:lang": "ja"
     }
   }, 
@@ -1442,90 +1526,6 @@
   {
     "label": {
       "type": "literal", 
-      "value": "竹下哲史", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "エディオン愛工大OBブリッツ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "足利豊", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中華職業棒球大聯盟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "石山一秀", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "田中実 (外野手)", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "竹田光訓", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "サムスン・ライオンズ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "田島俊雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "中信兄弟", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "米田慶三郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "デンカ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "高橋栄一郎", 
       "xml:lang": "ja"
     }, 
@@ -1538,24 +1538,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "和中道男", 
+      "value": "中村栄", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "加藤春雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "フジクラ", 
       "xml:lang": "ja"
     }
   }, 
@@ -1586,6 +1574,18 @@
   {
     "label": {
       "type": "literal", 
+      "value": "加藤春雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "吉井晃", 
       "xml:lang": "ja"
     }, 
@@ -1598,12 +1598,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "中村栄", 
+      "value": "和中道男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "フジクラ", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1634,96 +1634,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "甲斐拓哉", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "東海大学付属諏訪高等学校", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "岸本正治", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "尾茂田叶", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "明治大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "松田博明", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "近畿大学体育会硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "畑俊二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "松井淳 (外野手)", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "日本大学国際関係学部・大学院国際関係研究科", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "望月彦男", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "デンカ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "岡元勝幸", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "大京", 
       "xml:lang": "ja"
     }
   }, 
@@ -1742,7 +1658,19 @@
   {
     "label": {
       "type": "literal", 
-      "value": "赤木健一", 
+      "value": "岡元勝幸", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "大京", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "岸本正治", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -1754,24 +1682,96 @@
   {
     "label": {
       "type": "literal", 
-      "value": "坂田篤彦", 
+      "value": "望月彦男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "駒澤大学硬式野球部", 
+      "value": "デンカ", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "伊東大輔", 
+      "value": "松井淳 (外野手)", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "横浜中央クラブ", 
+      "value": "日本大学国際関係学部・大学院国際関係研究科", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "松田博明", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "近畿大学体育会硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "甲斐拓哉", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "東海大学付属諏訪高等学校", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "畑俊二", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "福本万一郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "靜甲", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "福本万一郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "日拓グループ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "赤木健一", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1802,18 +1802,6 @@
   {
     "label": {
       "type": "literal", 
-      "value": "福本万一郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "日拓グループ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "麻生知史", 
       "xml:lang": "ja"
     }, 
@@ -1826,84 +1814,24 @@
   {
     "label": {
       "type": "literal", 
-      "value": "福本万一郎", 
+      "value": "伊東大輔", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "靜甲", 
+      "value": "横浜中央クラブ", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "長坂秀樹", 
+      "value": "坂田篤彦", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "東海大学付属諏訪高等学校", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "川崎成晃", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鮮ど市場ゴールデンラークス", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "西嶋一記", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鮮ど市場ゴールデンラークス", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "田代将太郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "八戸学院大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "林亮介", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "コンピュータ教育学院硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "黒須陽一郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "立教大学硬式野球部", 
+      "value": "駒澤大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
@@ -1922,36 +1850,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "財前貴男", 
+      "value": "川崎成晃", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "エディオン愛工大OBブリッツ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中村光雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "奈良学園大学", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "清水貴之 (野球)", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "日本大学国際関係学部・大学院国際関係研究科", 
+      "value": "鮮ど市場ゴールデンラークス", 
       "xml:lang": "ja"
     }
   }, 
@@ -1970,7 +1874,187 @@
   {
     "label": {
       "type": "literal", 
-      "value": "白村明弘", 
+      "value": "林亮介", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "コンピュータ教育学院硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "清水貴之 (野球)", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "日本大学国際関係学部・大学院国際関係研究科", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "田代将太郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "八戸学院大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "西嶋一記", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "鮮ど市場ゴールデンラークス", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "財前貴男", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "エディオン愛工大OBブリッツ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "長坂秀樹", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "東海大学付属諏訪高等学校", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "黒須陽一郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "立教大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "中村光雄", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "奈良学園大学", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "内藤久", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "グローバルリーグ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "堀定一", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "慶應義塾体育会野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "宮澤健太郎", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "島井寛仁", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "鮮ど市場ゴールデンラークス", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "市田夏生", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "関西学院大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "常見忠", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "明治大学硬式野球部", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "森雅功", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "マルハ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "永井武雄", 
       "xml:lang": "ja"
     }, 
     "team_label": {
@@ -1994,84 +2078,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "堀定一", 
+      "value": "白村明弘", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "永井武雄", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "慶應義塾体育会野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "常見忠", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "宮澤健太郎", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "市田夏生", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "関西学院大学硬式野球部", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "島井寛仁", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "鮮ど市場ゴールデンラークス", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "森雅功", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "マルハ", 
       "xml:lang": "ja"
     }
   }, 
@@ -2090,24 +2102,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "内藤久", 
+      "value": "西本泰承", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "グローバルリーグ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "齋藤達則", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "明治大学硬式野球部", 
+      "value": "奈良学園大学", 
       "xml:lang": "ja"
     }
   }, 
@@ -2126,36 +2126,36 @@
   {
     "label": {
       "type": "literal", 
-      "value": "奈良不二也", 
+      "value": "齋藤達則", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "リッカー", 
+      "value": "明治大学硬式野球部", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "小林一夫", 
+      "value": "中村武義", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "日拓グループ", 
+      "value": "ニワショーセラム", 
       "xml:lang": "ja"
     }
   }, 
   {
     "label": {
       "type": "literal", 
-      "value": "西本泰承", 
+      "value": "五島道信", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "奈良学園大学", 
+      "value": "日本カーバイド工業", 
       "xml:lang": "ja"
     }
   }, 
@@ -2186,24 +2186,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "五島道信", 
+      "value": "奈良不二也", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "日本カーバイド工業", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "中村武義", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "ニワショーセラム", 
+      "value": "リッカー", 
       "xml:lang": "ja"
     }
   }, 
@@ -2222,12 +2210,60 @@
   {
     "label": {
       "type": "literal", 
+      "value": "小林一夫", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "日拓グループ", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "政山恵一", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "リッカー", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "斎藤忠二", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "日東紡績", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
       "value": "柳沢騰市", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
       "value": "日活撮影所", 
+      "xml:lang": "ja"
+    }
+  }, 
+  {
+    "label": {
+      "type": "literal", 
+      "value": "柴田竜拓", 
+      "xml:lang": "ja"
+    }, 
+    "team_label": {
+      "type": "literal", 
+      "value": "國學院大學", 
       "xml:lang": "ja"
     }
   }, 
@@ -2246,12 +2282,12 @@
   {
     "label": {
       "type": "literal", 
-      "value": "政山恵一", 
+      "value": "荻原久男", 
       "xml:lang": "ja"
     }, 
     "team_label": {
       "type": "literal", 
-      "value": "リッカー", 
+      "value": "大崎電気工業", 
       "xml:lang": "ja"
     }
   }, 
@@ -2282,18 +2318,6 @@
   {
     "label": {
       "type": "literal", 
-      "value": "柴田竜拓", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "國學院大學", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
       "value": "西村秀一", 
       "xml:lang": "ja"
     }, 
@@ -2312,30 +2336,6 @@
     "team_label": {
       "type": "literal", 
       "value": "グローバルリーグ", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "荻原久男", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "大崎電気工業", 
-      "xml:lang": "ja"
-    }
-  }, 
-  {
-    "label": {
-      "type": "literal", 
-      "value": "斎藤忠二", 
-      "xml:lang": "ja"
-    }, 
-    "team_label": {
-      "type": "literal", 
-      "value": "日東紡績", 
       "xml:lang": "ja"
     }
   }, 
